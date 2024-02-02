@@ -1,0 +1,48 @@
+.feature {
+    margin-top: -12px;
+    background-color: #F7F7F7;
+}
+.feature-heading {
+    font-family: Poppins;
+    font-size: 70px;
+    text-align: center;
+    font-weight: 400;
+}
+.feature-container {
+    display: flex;
+    width: 97%;
+    margin: auto;
+}
+.feature-cards {
+    width: 18%;
+    box-shadow: inset 0px 0px 20px #00000033;
+    border: 3px solid #FFFFFF;
+    border-radius: 15px;
+    margin: 10px;
+    background-color: #f4e6d8;
+    text-align: center;
+    height: 450px;
+}
+.padding-class {
+    padding: 10px;
+}
+.card-heading {
+    font-weight: 600;
+    font-size: 20px;
+    padding: 10px;
+    font-family: Poppins;
+
+}
+.feature-paragraph {
+    font-weight: 500;
+    padding: 20px;
+    font-family: Poppins;
+    margin-top: 20px;
+    font-size: 16px;
+}
+.card-image {
+    width: 100%;
+}
+.paragraph-contaner {
+    height: 250px;
+}

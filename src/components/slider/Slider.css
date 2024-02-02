@@ -1,0 +1,117 @@
+.sliderimg{
+    width: 100%;
+    height: 500px;
+    object-fit: cover
+  }
+
+.alice-carousel__dots  {
+    position: absolute !important;
+    bottom: 50px !important;
+    z-index: 1 !important;
+    background: #FFFFFF;
+    width: 150px;
+    left: 40%;
+    border-radius: 20px;
+}
+
+  .alice-carousel__prev-btn {
+    display: inline-block !important;
+    box-sizing: border-box !important;
+    padding: 10px 5px !important;
+    bottom: 40px !important;
+    position: absolute !important;
+    z-index: 999 !important;
+    left: -100px;
+}
+.alice-carousel__next-btn {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 50%;
+    padding: 10px 5px;
+    position: absolute;
+    bottom: 40px;
+    right: 20px;
+    z-index: 9;
+}
+
+
+.alice-carousel__dots-item:not(.__custom).__active {
+    background-color: #F48020 !important;
+}
+.alice-carousel__dots-item:not(.__custom) {
+    width: 10px !important;
+    height: 10px !important;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #e0e4fb;
+}
+.qr-text {
+    z-index: 99;
+    font-size: 18px;
+    font-family: Poppins !important;
+    line-height: 35px !important;
+    color: #FFFFFF;
+    font-weight:lighter !important;
+
+}
+.text-pos {
+    position: absolute;
+    bottom: 20px;
+    width: 30%;
+    margin-left: 30px;
+}
+.qr-angadi {
+    font-weight: bolder !important;
+    font-size: 24px;
+}
+.welcome-text {
+    position: absolute;
+    top: 100px;
+    width: 30%;
+    right: 150px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+.welcome {
+    font-size: 50px;
+    color: black;
+    font-family: Poppins;
+}
+.qr-ang{
+    font-size: 50px;
+    color: black;
+    font-family: Poppins;
+    font-weight: bolder;
+    line-height: 1 !important;
+}
+.text1 {
+    font-weight: 100;
+    font-size: 18px;
+    font-family: Poppins;
+    line-height: 5 !important;
+}
+.text2 {
+    font-weight: 500;
+    font-size: 30px;
+    font-family: Poppins;
+    line-height: 0.5 !important;
+}
+.text3 {
+    font-weight: bolder;
+    font-size: 45px;
+    font-family: Poppins;
+}
+.explore-btn {
+    background-color: #F48020;
+    color: #000000; 
+    width: 230px;
+    height: 40px;
+    border-radius: 25px;
+    border-style: none;
+    font-size: 20px;
+    font-family: Poppins;
+    cursor: pointer;
+    font-weight: 600;
+}

@@ -1,0 +1,21 @@
+.about-heading{
+    font-family: Poppins;
+    font-size: 30px;
+    line-height: 2;
+    font-weight: 600;
+  }
+  .about-heading2 {
+    font-family: Poppins;
+    font-size: 30px;
+    line-height:2;
+  }
+  .about-image {
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    margin-top: 50px;
+  }

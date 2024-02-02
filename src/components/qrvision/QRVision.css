@@ -1,0 +1,35 @@
+.qrvision {
+    position: relative;
+}
+.visionimage {
+    width: 1200px;
+    height: 500px;
+    /* object-fit: contain; */
+}
+.vision-container {
+    position: absolute;
+    top: 40%; /* Move the container to the vertical center of the parent */
+    left: 50%; /* Move the container to the horizontal center of the parent */
+    transform: translate(-50%, -50%); /* Adjust to center properly */
+}
+.vision-text {
+    position: absolute;
+    top: 20px;
+    top: 44%; /* Move the container to the vertical center of the parent */
+    left: 50%; /* Move the container to the horizontal center of the parent */
+    transform: translate(-50%, -50%); /* Adjust to center properly */
+    text-align: center;
+    width: 90%;
+}
+.vision-heading {
+    font-family: Poppins;
+    font-size: 70px;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+.vision-paragraph {
+    font-family: Poppins;
+    font-size: 30px;
+    color: #FFFFFF;
+    line-height: 1.5;
+}

@@ -1,0 +1,43 @@
+.qrimage {
+    width: 100%;
+    object-fit: contain;
+}
+.qrwho {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.qr-texts {
+    position: absolute;
+    top: 50px;
+    width: 60%;
+    text-align: center;
+}
+.qrwho-heading {
+    font-family: Poppins;
+    font-size: 70px;
+    color: #707070;
+}
+.qrwho-paragraph {
+    font-family: Poppins;
+    font-size: 35px;
+    color: #707070;
+    line-height: 1.2;
+}
+.awtlogo {
+    width: 250px;
+    height: 100px;
+    object-fit: contain;
+}
+.logo-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 180px;
+}
+.qrlogo {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+}

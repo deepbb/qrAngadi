@@ -35,8 +35,9 @@ function JoinUs() {
             <button className='contact-btn'>Contact Now</button>
             </div>
         </div>
+      
         </div>
-    </div>
+        </div>
   )
 }
 

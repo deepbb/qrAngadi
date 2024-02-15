@@ -4,7 +4,7 @@ import AliceCarousel from 'react-alice-carousel';
 import "react-alice-carousel/lib/alice-carousel.css";
 import image3 from "../../assets/slide1.png"
 
-
+ 
 export default function Slider() {
     
   return (

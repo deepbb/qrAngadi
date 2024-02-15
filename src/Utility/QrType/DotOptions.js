@@ -26,29 +26,28 @@ export const Dot = [
   },
 ];
 
-
 export const Cornor = [
-    {
-      name: "Square",
-      Image: dot1,
-    },
-    {
-      name: "dots",
-      Image: dot1,
-    },
-    
-  ];
-  
+  {
+    name: "Square",
+    Image: dot1,
+  },
+  {
+    name: "dots",
+    Image: dot1,
+  },
+];
 
-  export const Square = [
-    {
-      name: "Square",
-      Image: dot1,
-    },
-    {
-      name: "dots",
-      Image: dot1,
-    },
-    
-  ];
-  
+export const Square = [
+  {
+    name: "Square",
+    Image: dot1,
+  },
+  {
+    name: "dots",
+    Image: dot1,
+  },
+  {
+    name: "extra-rounded",
+    Image: dot1,
+  },
+];

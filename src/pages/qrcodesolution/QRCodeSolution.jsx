@@ -28,7 +28,6 @@ import Preview from "../../assets/preview.svg";
 import { IoIosArrowDown } from "react-icons/io";
 import { BsDownload } from "react-icons/bs";
 import { SketchPicker, BlockPicker } from "react-color";
-
 import QRCodeStyling, {
   DrawType,
   TypeNumber,
@@ -41,7 +40,7 @@ import QRCodeStyling, {
   Options,
 } from "qr-code-styling";
 import { Dot } from "../../Utility/QrType/DotOptions";
-import { CreateWebsiteQr } from "../../Api/QR";
+import { QrType } from "../../Utility/QrType/QrType";
 
 function QRCodeSolution() {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -53,8 +52,12 @@ function QRCodeSolution() {
   const [dottype, setDotType] = useState("");
   const [cornertype, setCornorType] = useState("");
   const [cornerdottype, setCornerdotType] = useState("");
+  const [logo, setLogo] = useState("");
 
   const [dotSelectedOption, setDotSelectedOption] = useState(-1);
+  const [qrTypeSelection, setQrTypeSelection] = useState(-1);
+
+  const [qrType, setQrType] = useState("");
 
   const toggleColorPicker = () => {
     setShowColorPicker(!showColorPicker);
@@ -78,9 +81,9 @@ function QRCodeSolution() {
     a: "1",
   });
   const [backgroundColor, setBackgroundColor] = useState({
-    r: "95",
-    g: "212",
-    b: "243",
+    r: "255",
+    g: "255",
+    b: "255",
     a: "1",
   });
   const [cornersColor, setCornersColor] = useState({
@@ -103,9 +106,9 @@ function QRCodeSolution() {
   const [options, setOptions] = useState({
     width: 300,
     height: 300,
-    type: "svg",
-    data: "http://qr-code-styling.com",
-    image: "/favicon.ico",
+    type: "png",
+    data: "https://angadiworldtech.com/",
+    image: QRAngadi,
     margin: 10,
     qrOptions: {
       typeNumber: 0,
@@ -113,9 +116,6 @@ function QRCodeSolution() {
       errorCorrectionLevel: "Q",
     },
     imageOptions: {
-      hideBackgroundDots: true,
-      imageSize: 0.4,
-      margin: 20,
       crossOrigin: "anonymous",
     },
     dotsOptions: {
@@ -129,7 +129,7 @@ function QRCodeSolution() {
       color: "#222222",
       type: "dot",
     },
-    cornersOptions: {
+    cornersSquareOptions: {
       color: "red",
       type: "dot",
     },
@@ -154,6 +154,7 @@ function QRCodeSolution() {
     // Update QR code options when background color changes
     setOptions((options) => ({
       ...options,
+      image: logo,
       backgroundOptions: {
         ...options.backgroundOptions,
         color: `rgba(${backgroundColor.r},${backgroundColor.g},${backgroundColor.b},${backgroundColor.a})`,
@@ -167,12 +168,12 @@ function QRCodeSolution() {
         ...options.cornersDotOptions,
         color: `rgba(${cornersDotColor.r},${cornersDotColor.g},${cornersDotColor.b},${cornersDotColor.a})`,
       },
-      cornersOptions: {
-        ...options.cornersOptions,
+      cornersSquareOptions: {
+        ...options.cornersSquareOptions,
         color: `rgba(${cornersColor.r},${cornersColor.g},${cornersColor.b},${cornersColor.a})`,
       },
     }));
-  }, [backgroundColor, dotColor, cornersDotColor, cornersColor, dottype]);
+  }, [backgroundColor, dotColor, cornersDotColor, cornersColor, dottype, logo]);
 
   const onDataChange = (event) => {
     setOptions((options) => ({
@@ -192,41 +193,21 @@ function QRCodeSolution() {
     });
   };
 
+  const onChangePicture = (e) => {
+    if (e.target.files[0]) {
+      // console.log("picture: ", e.target.files);
+      // setPicture(e.target.files[0]);
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        setLogo(reader.result);
+        console.log(reader.result);
+      });
+      reader.readAsDataURL(e.target.files[0]);
+      console.log(logo);
+    }
+  };
   //--------------------Api Calling----------------------//
 
-  // const CreateQr = (type) => {
-  //   switch (type) {
-  //     case "Website": {
-  //       CreateWebsiteQr({
-  //         Url: "https://www.geeksforgeeks.org",
-  //         dotoption: {
-  //           color: "#4267b2",
-  //           type: "classy",
-  //         },
-  //         backgroundOption: {
-  //           type: "",
-  //         },
-  //         cornersOptions: {
-  //           color: "",
-  //           type: "",
-  //         },
-  //         cornersDotOptions: {
-  //           color: "",
-  //           type: "",
-  //         },
-  //         image:
-  //           "https://www.seoclerk.com/pics/000/932/904/dd4a66cf9c1e002021ddaab315cdfccf.png",
-  //       }).than((res)=>{
-  //         console.log(res)
-  //       })
-
-  //       break;
-  //     }
-  //     case "platStore":{
-
-  //     }
-  //   }
-  // };
   return (
     <div className="qrcodesolutions">
       <div className="navbar-container">
@@ -242,71 +223,59 @@ function QRCodeSolution() {
           <button className="btn-tab">Professional</button>
         </div>
         <div className="icon-container">
-          <div className="logo-conatiner">
-            <img src={URL} alt="" className="logo-image" />
-            <p className="logo-text">Website URL</p>
-          </div>
-          <div className="logo-conatiner">
-            <img src={URL} alt="" className="logo-image" />
-            <p className="logo-text">Website URL</p>
-          </div>
-          <div className="logo-conatiner">
-            <img src={PDF} alt="" className="logo-image" />
-            <p className="logo-text">PDF</p>
-          </div>
-          <div className="logo-conatiner">
-            <img src={App} alt="" className="logo-image" />
-            <p className="logo-text">App</p>
-          </div>
-          <div className="logo-conatiner">
-            <img src={Image} alt="" className="logo-image" />
-            <p className="logo-text">Image</p>
-          </div>
-          <div className="logo-conatiner">
-            <img src={Audio} alt="" className="logo-image" />
-            <p className="logo-text">Audio</p>
-          </div>
-          <div className="logo-conatiner">
-            <img src={Video} alt="" className="logo-image" />
-            <p className="logo-text">Video</p>
-          </div>
-          <div className="logo-conatiner">
-            <img src={Social} alt="" className="logo-image" />
-            <p className="logo-text">Social</p>
-          </div>
-          <div className="logo-conatiner">
-            <img src={WhatsApp} alt="" className="logo-image" />
-            <p className="logo-text">WhatsApp</p>
-          </div>
-          <div className="logo-conatiner">
-            <img src={Insta} alt="" className="logo-image" />
-            <p className="logo-text">Instagram</p>
-          </div>
-          <div className="logo-conatiner">
-            <img src={Facebook} alt="" className="logo-image" />
-            <p className="logo-text">Facebook</p>
-          </div>
-          <div className="logo-conatiner">
-            <img src={LinkedIn} alt="" className="logo-image" />
-            <p className="logo-text">LinkedIn</p>
-          </div>
-          <div className="logo-conatiner">
-            <img src={Telegram} alt="" className="logo-image" />
-            <p className="logo-text">Telegram</p>
-          </div>
-          <div className="logo-conatiner">
-            <img src={X} alt="" className="logo-image" />
-            <p className="logo-text">X</p>
-          </div>
-          <div className="logo-conatiner">
-            <img src={Youtube} alt="" className="logo-image" />
-            <p className="logo-text">Youtube</p>
-          </div>
+          {QrType && QrType.length > 0
+            ? QrType.map((item, index) => (
+                <div
+                  key={index} // Add a unique key prop for each mapped item
+                  style={{
+                    width: "13%",
+                    height: "60px",
+                    margin: "10px 5px",
+                    display: "flex",
+                    justifyContent: "flex-start",
+                    alignItems: "center",
+                    borderRadius: "10px",
+                    cursor: "pointer",
+                    boxShadow:
+                      "inset 0 0 10px rgba(0, 0, 0, 0.29), 0 3px 20px rgba(0, 0, 0, 0.1)",
+                    border: "3px solid #ffffff",
+                    backgroundColor:
+                      index === qrTypeSelection ? "#f48020" : "#fff",
+                  }}
+                  onClick={() => (
+                    setQrTypeSelection(index), setQrType(item.type)
+                  )}
+                >
+                  <img
+                    src={item.Image}
+                    alt=""
+                    style={{
+                      height: "22px",
+                      width: "22px",
+                      objectFit: "contain",
+                      marginLeft: "10px",
+                      marginRight: "10px",
+                    }}
+                  />
+                  <p>{item.name}</p>
+                </div>
+              ))
+            : null}
         </div>
       </div>
       <div className="mainContainer2">
         <div className="customize">
           <button className="customize-button">Customize</button>
+          <input
+            style={{
+              width: 500,
+              height: 40,
+              borderWidth: 2,
+              borderRadius: 5,
+            }}
+            value={options.data}
+            onChange={onDataChange}
+          />
           <div className="radio-container">
             <label>
               <input
@@ -395,7 +364,7 @@ function QRCodeSolution() {
                         width: 40,
                         borderWidth: index == dotSelectedOption ? 5 : 1,
                         borderColor:
-                          index == dotSelectedOption ? "aqua" : "grey",
+                          index == dotSelectedOption ? "#f48020" : "grey",
                         borderStyle: "solid",
 
                         margin: 5,
@@ -497,7 +466,7 @@ function QRCodeSolution() {
                   marginLeft: 10,
                 }}
               >
-                Corners Options
+                Corners Square Options
               </span>
               <svg
                 style={{ width: 20, height: 20, marginRight: 5 }}
@@ -609,44 +578,67 @@ function QRCodeSolution() {
           </div>
 
           <div className="box3">
-            <button className="btn1">Upload Logo</button>
-            <div className="logo-wrapper">
-              <button className="upload-btn">Upload</button>
+            <div>
+              <button className="btn1">
+                <label>Upload Logo</label>
+              </button>
+              <div className="logo-wrapper">
+                <button className="upload-btn">
+                  <label htmlFor="fileInput">Upload</label>
+                  <input
+                    type="file"
+                    id="fileInput"
+                    style={{ display: "none" }}
+                    onChange={(e) => onChangePicture(e)}
+                  />
+                  {/* <img src={logo}></img> */}
+                </button>
+              </div>
             </div>
             <div>
               <div ref={ref} />
-              <div
-                style={{
-                  width: 200,
-                }}
-              >
-                <input value={options.data} onChange={onDataChange} />
-                <select onChange={onExtensionChange} value={fileExt}>
-                  <option value="svg">SVG</option>
-                  <option value="png">PNG</option>
-                  <option value="jpeg">JPEG</option>
-                  <option value="webp">WEBP</option>
-                </select>
-                <button onClick={onDownloadClick}>Download</button>
-              </div>
             </div>
           </div>
         </div>
         <div className="qrcode-preview">
-          <div className="preview-section">
-            <img src={Preview} className="preview-image" alt="" />
-          </div>
+          {/* <div className="preview-section">
+            <img src={logo} className="preview-image" alt="" />
+          </div> */}
           <div className="button-section">
             <button className="create-qrbtn">
               Create QR Code <IoIosArrowDown size={25} />
             </button>
-            <span className="btn-text">Download</span>
-            <button className="create-qrbtn" style={{ marginTop: 20 }}>
+            {/* <span className="btn-text">Download</span> */}
+            <select
+              className="create-qrbtn"
+              style={{ marginTop: 20 }}
+              onChange={onExtensionChange}
+              value={fileExt}
+            >
+              <option style={{ textAlign: "center" }} value="svg">
+                SVG
+              </option>
+              <option style={{ textAlign: "center" }} value="png">
+                PNG
+              </option>
+              <option style={{ textAlign: "center" }} value="jpeg">
+                JPEG
+              </option>
+              <option style={{ textAlign: "center" }} value="webp">
+                WEBP
+              </option>
+            </select>
+
+            <button
+              className="create-qrbtn"
+              style={{ marginTop: 20 }}
+              onClick={onDownloadClick}
+            >
               Download <BsDownload size={20} style={{ marginLeft: 10 }} />
             </button>
-            <span className="btn-or">
+            {/* <span className="btn-or">
               Or <br /> Share on
-            </span>{" "}
+            </span>{" "} */}
             <br />
             <div className="share-container">
               <img src={WhatsApp} alt="" className="social-icons" />

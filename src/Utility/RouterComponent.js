@@ -4,6 +4,7 @@ import { Route,Routes } from "react-router-dom";
 import Home from '../pages/Home/Home'
 import QRCodeSolution from '../pages/qrcodesolution/QRCodeSolution';
 import Profile from '../pages/profile/Profile';
+import Signup from '../pages/signup/Signup';
 
 function RouterComponent() {
   return (
@@ -14,6 +15,7 @@ function RouterComponent() {
       <Route path="/aboutus" element={<About />}/>
       <Route path="/qrcodesolutions" element={<QRCodeSolution />}/>
       <Route path='/profile' element={<Profile />} />
+      <Route path="/signup" element={<Signup />} />
 
       </Routes>
     </div>

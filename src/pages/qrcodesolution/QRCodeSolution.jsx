@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Navbar from '../../components/navbar/Navbar'
 import Footer from "../../components/footer/Footer"
 import "./QRCodeSolution.css"
@@ -28,7 +28,17 @@ import Preview from "../../assets/preview.svg"
 import { IoIosArrowDown } from "react-icons/io";
 import { BsDownload } from "react-icons/bs";
 
-
+import QRCodeStyling, {
+  DrawType,
+  TypeNumber,
+  Mode,
+  ErrorCorrectionLevel,
+  DotType,
+  CornerSquareType,
+  CornerDotType,
+  Extension,
+  Options
+} from "qr-code-styling";
 
 
 
@@ -42,6 +52,74 @@ function QRCodeSolution() {
 
   const handleOptionChange = (option) => {
     setSelectedOption(option);
+  };
+
+  const [options, setOptions] = useState({
+    width: 300,
+    height: 300,
+    type: 'svg',
+    data: 'http://qr-code-styling.com',
+    image: '/favicon.ico',
+    margin: 10,
+    qrOptions: {
+      typeNumber: 0,
+      mode: 'Byte',
+      errorCorrectionLevel: 'Q'
+    },
+    imageOptions: {
+      hideBackgroundDots: true,
+      imageSize: 0.4,
+      margin: 20,
+      crossOrigin: 'anonymous',
+    },
+    dotsOptions: {
+      color: '#222222',
+      type: 'rounded'
+    },
+    backgroundOptions: {
+      color: '#5FD4F3',
+    },
+    cornersSquareOptions: {
+      color: '#222222',
+      type: 'extra-rounded',
+    },
+    cornersDotOptions: {
+      color: '#222222',
+      type: 'dot',
+    }
+  });
+
+  const [fileExt, setFileExt] = useState("svg");
+  const [qrCode] = useState(new QRCodeStyling(options));
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      qrCode.append(ref.current);
+    }
+  }, [qrCode, ref]);
+
+  useEffect(() => {
+    if (!qrCode) return;
+    qrCode.update(options);
+  }, [qrCode, options]);
+
+  const onDataChange = (event) => {
+    setOptions(options => ({
+      ...options,
+      data: event.target.value
+    }));
+  };
+
+  const onExtensionChange = (event) => {
+    setFileExt(event.target.value);
+  };
+
+  const onDownloadClick = () => {
+    if (!qrCode) return;
+    qrCode.download({
+      extension: fileExt
+    });
   };
   return (
     <div className='qrcodesolutions'>
@@ -365,6 +443,20 @@ function QRCodeSolution() {
             <span className='btn-text'>Download</span>
             <button className='create-qrbtn' style={{marginTop:20}}>Download <BsDownload size={20} style={{marginLeft:10}} /></button>
             <span className='btn-or'>Or <br/> Share on</span> <br />
+            <div>
+            <h2>QR code styling for React</h2>
+      <div ref={ref} />
+      <div style={styles.inputWrapper}>
+        <input value={options.data} onChange={onDataChange} style={styles.inputBox} />
+        <select onChange={onExtensionChange} value={fileExt}>
+          <option value="svg">SVG</option>
+          <option value="png">PNG</option>
+          <option value="jpeg">JPEG</option>
+          <option value="webp">WEBP</option>
+        </select>
+        <button onClick={onDownloadClick}>Download</button>
+      </div>
+            </div>
             <div className='share-container'>
               <img src={WhatsApp} alt=''   className='social-icons' />
               <img src={Insta} alt=''      className='social-icons' />
@@ -386,5 +478,19 @@ function QRCodeSolution() {
     </div>
   )
 }
+
+const styles = {
+  inputWrapper: {
+    margin: "20px 0",
+    display: "flex",
+    justifyContent: "space-between",
+    width: "100%",
+    maxWidth: "300px"
+  },
+  inputBox: {
+    flexGrow: 1,
+    marginRight: 20
+  }
+};
 
 export default QRCodeSolution

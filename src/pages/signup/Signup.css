@@ -1,0 +1,15 @@
+.signup {
+    background-image: url("./Mask Group 11@2x.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 600px;
+    width: 100%;
+}
+.signup_form {
+    width: 80%;
+    margin: auto;
+}
+.form_background {
+    height: 500px;
+    width: 70%;
+}

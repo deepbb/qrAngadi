@@ -73,14 +73,14 @@ function QRCodeSolution() {
       crossOrigin: 'anonymous',
     },
     dotsOptions: {
-      color: '#222222',
-      type: 'rounded'
+      color: '#FF3B00',
+      type: 'Squre'
     },
     backgroundOptions: {
-      color: '#5FD4F3',
+      color: '#FFFFFF',
     },
     cornersSquareOptions: {
-      color: '#222222',
+      color: '#FF3B00',
       type: 'extra-rounded',
     },
     cornersDotOptions: {

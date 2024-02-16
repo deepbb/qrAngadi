@@ -1,11 +1,11 @@
 import { BaseUrl } from "./BaseUrl";
 
 //--------------------WEBSITE------------------------------//
-
 //----------------Create Qr-----------------------//
 
 export const CreateWebsiteQr = async (data) => {
-  let token = localStorage.getItem("token");
+  let token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YWZlNDAwZjg2ZWE4YjZiOWJhN2JjNSIsImlhdCI6MTcwNjUwODg2OCwiZXhwIjoxNzA4NTgyNDY4fQ.qxSNCC3icxA3r13KMegX6YpyOAmZNC-2_9Z_-LPdz7w";
   try {
     let result = await fetch(`${BaseUrl}/Qr/Websiteurl/Create`, {
       method: "POST",
@@ -79,3 +79,5 @@ export const DeleteWebsiteQr = async (id) => {
     return error.message;
   }
 };
+
+//--------------------------------PLAYSTORE----------------------------------------------//

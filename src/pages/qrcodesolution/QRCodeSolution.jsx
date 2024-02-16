@@ -2,20 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import "./QRCodeSolution.css";
-import URL from "../../assets/url-link.svg";
-import Multi from "../../assets/multi-url.svg";
-import Text from "../../assets/text.svg";
-import Email from "../../assets/email.svg";
-import Wifi from "../../assets/wifi.svg";
-import Vcard from "../../assets/vcard.svg";
-import SMS from "../../assets/sms.svg";
-import Contact from "../../assets/contacts.svg";
-import PDF from "../../assets/pdf.svg";
-import App from "../../assets/app.svg";
-import Image from "../../assets/image.svg";
-import Audio from "../../assets/audio.svg";
-import Video from "../../assets/file-video.svg";
-import Social from "../../assets/social-media.svg";
 import WhatsApp from "../../assets/whatsapp.svg";
 import Insta from "../../assets/insta.png";
 import Facebook from "../../assets/fb.png";
@@ -41,6 +27,7 @@ import QRCodeStyling, {
 } from "qr-code-styling";
 import { Dot } from "../../Utility/QrType/DotOptions";
 import { QrType } from "../../Utility/QrType/QrType";
+import { CreateQr } from "../../Utility/CreateQr";
 
 function QRCodeSolution() {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -53,11 +40,13 @@ function QRCodeSolution() {
   const [cornertype, setCornorType] = useState("");
   const [cornerdottype, setCornerdotType] = useState("");
   const [logo, setLogo] = useState("");
+  const [images, setImages] = useState("");
 
   const [dotSelectedOption, setDotSelectedOption] = useState(-1);
   const [qrTypeSelection, setQrTypeSelection] = useState(-1);
 
   const [qrType, setQrType] = useState("");
+  const [Url, setUrl] = useState("");
 
   const toggleColorPicker = () => {
     setShowColorPicker(!showColorPicker);
@@ -151,7 +140,6 @@ function QRCodeSolution() {
   }, [qrCode, options]);
 
   useEffect(() => {
-    // Update QR code options when background color changes
     setOptions((options) => ({
       ...options,
       image: logo,
@@ -176,6 +164,7 @@ function QRCodeSolution() {
   }, [backgroundColor, dotColor, cornersDotColor, cornersColor, dottype, logo]);
 
   const onDataChange = (event) => {
+    setUrl(event.target.value);
     setOptions((options) => ({
       ...options,
       data: event.target.value,
@@ -194,19 +183,51 @@ function QRCodeSolution() {
   };
 
   const onChangePicture = (e) => {
+    setImages(e.target.files[0]);
     if (e.target.files[0]) {
-      // console.log("picture: ", e.target.files);
-      // setPicture(e.target.files[0]);
       const reader = new FileReader();
       reader.addEventListener("load", () => {
         setLogo(reader.result);
-        console.log(reader.result);
       });
       reader.readAsDataURL(e.target.files[0]);
       console.log(logo);
     }
   };
   //--------------------Api Calling----------------------//
+
+  const GenerateDyamicqr = async () => {
+    if (!qrType) {
+      return false;
+    } else if (!Url) {
+      return false;
+    }
+    if (images) {
+      const data = new FormData();
+      data.append("file", images);
+      data.append("upload_preset", "vsqmoxq9");
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/dxlmwq61j/image/upload",
+        {
+          method: "post",
+          body: data,
+        }
+      );
+      const file = await res.json();
+      if (file.secure_url) {
+      } else {
+        let data1 = CreateQr(
+          qrType,
+          dotColor,
+          dottype,
+          cornersDotColor,
+          cornersColor,
+          file.secure_url,
+          Url
+        );
+        console.log(data1);
+      }
+    }
+  };
 
   return (
     <div className="qrcodesolutions">
@@ -605,7 +626,7 @@ function QRCodeSolution() {
             <img src={logo} className="preview-image" alt="" />
           </div> */}
           <div className="button-section">
-            <button className="create-qrbtn">
+            <button className="create-qrbtn" onClick={GenerateDyamicqr}>
               Create QR Code <IoIosArrowDown size={25} />
             </button>
             {/* <span className="btn-text">Download</span> */}

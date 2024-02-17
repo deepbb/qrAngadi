@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
-import "./Signup.css"
-import SignupForm from "./Group 6741@2x.png"
-import Logo from "./Group 6742.png"
+import "./Login.css"
+import SignupForm from "../signup/Group 6741@2x.png"
+import Logo from "../signup/Group 6742.png"
 import { useNavigate } from 'react-router-dom';
 
-function Signup() {
+function Login() {
+    const [isChecked, setChecked] = useState(false);
+
+    const handleCheckboxChange = () => {
+      setChecked(!isChecked);
+    };
+  
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    Name: '',
-    lastName: '',
     Email: '',
     Password: '',
-    ContactNumber: '',
-    otp: '',
   });
 
   const handleChange = (e) => {
@@ -25,7 +27,7 @@ function Signup() {
     // Add your logic here to handle form submission
     console.log('Form submitted:', formData);
     try {
-      const response = await fetch('http://103.120.176.158:9100/api/v1/Users/Signup', {
+      const response = await fetch('http://103.120.176.158:9100/api/v1/Users/Signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +37,7 @@ function Signup() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log('Signup successful:', data);
+        console.log('Signin successful:', data);
         alert("Successfully Created Account")
 
         localStorage.setItem('userData', JSON.stringify(formData));
@@ -43,19 +45,16 @@ function Signup() {
         // You can add further logic for successful signup
       } else {
         const errorData = await response.json();
-        console.error('Signup failed:', errorData);
+        console.error('Sigin failed:', errorData);
         alert(errorData.message)
         // You can handle errors appropriately
       }
     } catch (error) {
-      console.error('Error during signup:', error.message);
+      console.error('Error during sigin:', error.message);
       alert(error.message)
     }
 
   };
-  const handleNaviate = ()=> {
-    navigate("/")
-  }
   return (
     <div className='signup'>
        <div className='signup_form'>
@@ -65,30 +64,10 @@ function Signup() {
                   <img src={Logo} alt='' style={{width:"70%"}} />
               </div>
               <div className='form_container'>
-                <span style={{fontFamily:'Poppins',fontSize:16}}>Create An Account</span>
-                <span style={{fontSize:14}}>Already an user?</span> <span style={{fontSize:14,color:'#F48020'}}>signin</span>
+                <span style={{fontFamily:'Poppins',fontSize:16}}>Sign in</span>
+                <span style={{fontSize:14}}>New user?</span> <span style={{fontSize:14,color:'#F48020'}}>sigup</span>
               <form onSubmit={handleSubmit} className='submit_form' >
                 <div className='name_form'>
-      <input
-        type="text"
-        id="firstName"
-        name="Name"
-        value={formData.Name}
-        onChange={handleChange}
-        required
-        className='firstname_input'
-        placeholder='First Name'
-      />
-      <input
-        type="text"
-        id="lastName"
-        name="lastName"
-        value={formData.lastName}
-        onChange={handleChange}
-        required
-        className='lastname_input'
-        placeholder='Last Name'
-      />
       </div>
       <input
         type="email"
@@ -110,38 +89,20 @@ function Signup() {
         className='input'
         placeholder='Password'
       />
+      <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
       <input
-        type="tel"
-        id="mobileNumber"
-        name="ContactNumber"
-        pattern="[0-9]{10}"
-        value={formData.ContactNumber}
-        onChange={handleChange}
-        required
-        className='input'
-        placeholder='Mobile Number'
+        type="checkbox"
+        id="keepSignedIn"
+        name="keepSignedIn"
+        checked={isChecked}
+        onChange={handleCheckboxChange}
       />
-      <span style={{position:'absolute',top:'69%', right:'6%',fontSize:10,fontFamily:'poppins',color:'#F48020',fontWeight:'600',cursor:'pointer'}}>Send OTP</span>
-      <input
-        type="text"
-        id="otp"
-        name="otp"
-        value={formData.otp}
-        onChange={handleChange}
-        required
-        className='input'
-        placeholder='Enter OTP'
-      />
+      <label htmlFor="keepSignedIn">Keep me signed in</label>
+</div>
 
 
-      <button type="submit" className='submit'>Submit</button>
-      {/* <div className='signinwith'>
-        <div className='leftline'></div>
-        <div style={{fontSize:12,marginTop:10}}>or signin with</div>
-        <div className='rightline'></div>
-      </div> */}
+      <button type="submit" className='submit'>SignIn</button>
     </form>
-    <button onClick={handleNaviate}>Navigate</button>
               </div>
             </div>
        </div>
@@ -149,4 +110,4 @@ function Signup() {
   )
 }
 
-export default Signup
+export default Login

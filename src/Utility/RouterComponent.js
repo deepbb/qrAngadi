@@ -5,6 +5,7 @@ import Home from '../pages/Home/Home'
 import QRCodeSolution from '../pages/qrcodesolution/QRCodeSolution';
 import Profile from '../pages/profile/Profile';
 import Signup from '../pages/signup/Signup';
+import Login from '../pages/login/Login';
 
 function RouterComponent() {
 
@@ -31,14 +32,14 @@ console.log("LOG",isLoggedIn);
     <div>
        {/* main routes */}
        <Routes>
-        <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/signup" />} />
-        <Route path="/aboutus" element={isLoggedIn ? <About /> : <Navigate to="/signup" />} />
+        <Route path="/" element={<Home />}/>
+        <Route path="/aboutus" element={<About />} />
         <Route
           path="/qrcodesolutions"
-          element={isLoggedIn ? <QRCodeSolution /> : <Navigate to="/signup" />}
-        />
-        <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/signup" />} />
+          element={<QRCodeSolution/>} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   )

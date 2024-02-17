@@ -28,6 +28,8 @@ import QRCodeStyling, {
 import { Dot } from "../../Utility/QrType/DotOptions";
 import { QrType } from "../../Utility/QrType/QrType";
 import { CreateQr } from "../../Utility/CreateQr";
+import { Cornor } from "../../Utility/QrType/DotOptions"
+import { Square } from "../../Utility/QrType/DotOptions"
 
 function QRCodeSolution() {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -108,19 +110,15 @@ function QRCodeSolution() {
       crossOrigin: "anonymous",
     },
     dotsOptions: {
-      color: "#222222",
-      type: "rounded",
+      color: '#222222',
+      type: 'rounded'
     },
     backgroundOptions: {
-      color: "#5FD4F3",
-    },
-    cornersDotOptions: {
-      color: "#222222",
-      type: "dot",
+      color: '#5FD4F3',
     },
     cornersSquareOptions: {
-      color: "red",
-      type: "dot",
+      color: '#222222',
+      type: 'extra-rounded',
     },
   });
 
@@ -228,6 +226,7 @@ function QRCodeSolution() {
           qrType,
           dotColor,
           dottype,
+          cornertype,
           cornersDotColor,
           cornersColor,
           file.secure_url,
@@ -514,7 +513,7 @@ function QRCodeSolution() {
                 />
               </svg>
             </div>
-            <div className="smallBox-container">
+            {/* <div className="smallBox-container">
               <div className="small-box"></div>
               <div className="small-box"></div>
               <div className="small-box"></div>
@@ -542,6 +541,57 @@ function QRCodeSolution() {
                       setCornersColor(color.rgb);
                     }}
                     color={cornersColor}
+                  />
+                </div>
+              )}
+            </div> */}
+            <div className="smallBox-container">
+              {Cornor && Cornor.length > 0
+                ? Cornor.map((item, index) => (
+                    <div
+                      style={{
+                        height: 30,
+                        width: 40,
+                        borderWidth: index == dotSelectedOption ? 5 : 1,
+                        borderColor:
+                          index == dotSelectedOption ? "#f48020" : "grey",
+                        borderStyle: "solid",
+
+                        margin: 5,
+                      }}
+                      onClick={() => (
+                        setDotType(item.name), setDotSelectedOption(index)
+                      )}
+                    >
+                      <img
+                        style={{
+                          height: "100%",
+                          width: "100%",
+                          cursor: "pointer",
+                        }}
+                        src={item.Image}
+                      ></img>
+                    </div>
+                  ))
+                : null}
+
+              <div className="color-box-container" onClick={toggleColorPicker}>
+                <div
+                  className="color-box"
+                  style={{
+                    backgroundColor: `rgba(${dotColor.r},${dotColor.g},${dotColor.b},${dotColor.a})`,
+                  }}
+                ></div>
+                <span className="label-text">{`rgba(${dotColor.r},${dotColor.g},${dotColor.b},${dotColor.a})`}</span>
+              </div>
+
+              {showColorPicker && (
+                <div style={{ position: "relative", bottom: 60, left: 200 }}>
+                  <SketchPicker
+                    onChange={(color) => {
+                      setDotColor(color.rgb);
+                    }}
+                    color={dotColor}
                   />
                 </div>
               )}
@@ -573,7 +623,7 @@ function QRCodeSolution() {
                 />
               </svg>
             </div>
-            <div className="smallBox-container">
+            {/* <div className="smallBox-container">
               <div className="small-box"></div>
               <div className="small-box"></div>
               <div className="small-box"></div>
@@ -601,6 +651,57 @@ function QRCodeSolution() {
                       setCornersDotColor(color.rgb);
                     }}
                     color={cornersDotColor}
+                  />
+                </div>
+              )}
+            </div> */}
+             <div className="smallBox-container">
+              {Square && Square.length > 0
+                ? Square.map((item, index) => (
+                    <div
+                      style={{
+                        height: 30,
+                        width: 40,
+                        borderWidth: index == dotSelectedOption ? 5 : 1,
+                        borderColor:
+                          index == dotSelectedOption ? "#f48020" : "grey",
+                        borderStyle: "solid",
+
+                        margin: 5,
+                      }}
+                      onClick={() => (
+                        setDotType(item.name), setDotSelectedOption(index)
+                      )}
+                    >
+                      <img
+                        style={{
+                          height: "100%",
+                          width: "100%",
+                          cursor: "pointer",
+                        }}
+                        src={item.Image}
+                      ></img>
+                    </div>
+                  ))
+                : null}
+
+              <div className="color-box-container2" onClick={toggleColorPicker}>
+                <div
+                  className="color-box"
+                  style={{
+                    backgroundColor: `rgba(${dotColor.r},${dotColor.g},${dotColor.b},${dotColor.a})`,
+                  }}
+                ></div>
+                <span className="label-text">{`rgba(${dotColor.r},${dotColor.g},${dotColor.b},${dotColor.a})`}</span>
+              </div>
+
+              {showColorPicker && (
+                <div style={{ position: "relative", bottom: 60, left: 200 }}>
+                  <SketchPicker
+                    onChange={(color) => {
+                      setDotColor(color.rgb);
+                    }}
+                    color={dotColor}
                   />
                 </div>
               )}

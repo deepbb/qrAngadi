@@ -174,7 +174,13 @@ label {
 .color-box-container {
   display: flex;
   align-items: center;
-  margin-left: 30px;
+  margin-left: 70px;
+  padding: 5px;
+}
+.color-box-container2 {
+  display: flex;
+  align-items: center;
+  margin-left:280px;
   padding: 5px;
 }
 .color-box {

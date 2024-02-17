@@ -34,8 +34,12 @@ export default function Navbar() {
           </li>
         </div>
         <div className="navbar-login">
+          <Link to="/login" style={{textDecoration:'none'}}>
           <button className="btn-login">Login</button>
+          </Link>
+          <Link to="/signup" style={{textDecoration:'none'}}>
           <button className="btn-signup">Sign up</button>
+          </Link>
         </div>
       </div>
     </div>

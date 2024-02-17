@@ -214,6 +214,15 @@ function QRCodeSolution() {
       );
       const file = await res.json();
       if (file.secure_url) {
+        let result = CreateQr(
+          qrType,
+          dotColor,
+          dottype,
+          cornersDotColor,
+          cornersColor,
+          file.secure_url,
+          Url
+        );
       } else {
         let data1 = CreateQr(
           qrType,

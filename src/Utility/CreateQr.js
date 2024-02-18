@@ -15,8 +15,11 @@ export const CreateQr = (
   dottype,
   cornersDotColor,
   cornersColor,
+  cornerdottype,
+  cornertype,
   logo,
-  Url
+  Url,
+  navigate
 ) => {
   switch (type) {
     case "Website": {
@@ -31,23 +34,26 @@ export const CreateQr = (
         },
         cornersOptions: {
           color: `rgba(${cornersColor.r},${cornersColor.g},${cornersColor.b},${cornersColor.a})`,
-          type: "dots",
+          type: cornertype,
         },
         cornersDotOptions: {
           color: `rgba(${cornersDotColor.r},${cornersDotColor.g},${cornersDotColor.b},${cornersDotColor.a})`,
-          type: "dots",
+          type: cornerdottype,
         },
         image: logo,
       }).then((res) => {
+        console.log(res);
         if (res.status === "success") {
-          return res.data;
+          alert("qr Created Success");
+          navigate("/profile");
         } else {
-          return res;
+          alert(res);
         }
       });
       break;
     }
     case "playstore": {
+      console.log("loading");
       CreatePlayStoreQr({
         Url: Url,
         dotoption: {
@@ -59,18 +65,20 @@ export const CreateQr = (
         },
         cornersOptions: {
           color: `rgba(${cornersColor.r},${cornersColor.g},${cornersColor.b},${cornersColor.a})`,
-          type: "dots",
+          type: cornertype,
         },
         cornersDotOptions: {
           color: `rgba(${cornersDotColor.r},${cornersDotColor.g},${cornersDotColor.b},${cornersDotColor.a})`,
-          type: "dots",
+          type: cornerdottype,
         },
         image: logo,
       }).then((res) => {
+        console.log(res);
         if (res.status === "success") {
-          return res.data;
+          navigate("/profile");
+          alert("qr Created Success");
         } else {
-          return res;
+          alert(res);
         }
       });
       break;
@@ -87,18 +95,19 @@ export const CreateQr = (
         },
         cornersOptions: {
           color: `rgba(${cornersColor.r},${cornersColor.g},${cornersColor.b},${cornersColor.a})`,
-          type: "dots",
+          type: cornertype,
         },
         cornersDotOptions: {
           color: `rgba(${cornersDotColor.r},${cornersDotColor.g},${cornersDotColor.b},${cornersDotColor.a})`,
-          type: "dots",
+          type: cornerdottype,
         },
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
-          return res.data;
+          navigate("/profile");
+          alert("qr Created Success");
         } else {
-          return res;
+          alert(res);
         }
       });
       break;
@@ -115,18 +124,19 @@ export const CreateQr = (
         },
         cornersOptions: {
           color: `rgba(${cornersColor.r},${cornersColor.g},${cornersColor.b},${cornersColor.a})`,
-          type: "dots",
+          type: cornertype,
         },
         cornersDotOptions: {
           color: `rgba(${cornersDotColor.r},${cornersDotColor.g},${cornersDotColor.b},${cornersDotColor.a})`,
-          type: "dots",
+          type: cornerdottype,
         },
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
-          return res.data;
+          navigate("/profile");
+          alert("qr Created Success");
         } else {
-          return res;
+          alert(res);
         }
       });
       break;
@@ -143,18 +153,19 @@ export const CreateQr = (
         },
         cornersOptions: {
           color: `rgba(${cornersColor.r},${cornersColor.g},${cornersColor.b},${cornersColor.a})`,
-          type: "dots",
+          type: cornertype,
         },
         cornersDotOptions: {
           color: `rgba(${cornersDotColor.r},${cornersDotColor.g},${cornersDotColor.b},${cornersDotColor.a})`,
-          type: "dots",
+          type: cornerdottype,
         },
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
-          return res.data;
+          navigate("/profile");
+          alert("qr Created Success");
         } else {
-          return res;
+          alert(res);
         }
       });
       break;
@@ -171,18 +182,19 @@ export const CreateQr = (
         },
         cornersOptions: {
           color: `rgba(${cornersColor.r},${cornersColor.g},${cornersColor.b},${cornersColor.a})`,
-          type: "dots",
+          type: cornertype,
         },
         cornersDotOptions: {
           color: `rgba(${cornersDotColor.r},${cornersDotColor.g},${cornersDotColor.b},${cornersDotColor.a})`,
-          type: "dots",
+          type: cornerdottype,
         },
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
-          return res.data;
+          navigate("/profile");
+          alert("qr Created Success");
         } else {
-          return res;
+          alert(res);
         }
       });
       break;
@@ -199,18 +211,19 @@ export const CreateQr = (
         },
         cornersOptions: {
           color: `rgba(${cornersColor.r},${cornersColor.g},${cornersColor.b},${cornersColor.a})`,
-          type: "dots",
+          type: cornertype,
         },
         cornersDotOptions: {
           color: `rgba(${cornersDotColor.r},${cornersDotColor.g},${cornersDotColor.b},${cornersDotColor.a})`,
-          type: "dots",
+          type: cornerdottype,
         },
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
-          return res.data;
+          navigate("/profile");
+          alert("qr Created Success");
         } else {
-          return res;
+          alert(res);
         }
       });
       break;
@@ -227,18 +240,19 @@ export const CreateQr = (
         },
         cornersOptions: {
           color: `rgba(${cornersColor.r},${cornersColor.g},${cornersColor.b},${cornersColor.a})`,
-          type: "dots",
+          type: cornertype,
         },
         cornersDotOptions: {
           color: `rgba(${cornersDotColor.r},${cornersDotColor.g},${cornersDotColor.b},${cornersDotColor.a})`,
-          type: "dots",
+          type: cornerdottype,
         },
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
-          return res.data;
+          navigate("/profile");
+          alert("qr Created Success");
         } else {
-          return res;
+          alert(res);
         }
       });
       break;

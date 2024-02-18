@@ -48,7 +48,7 @@ export const DeleteWebsiteQr = async (id) => {
   let token = localStorage.getItem("token");
   try {
     let result = await fetch(`${BaseUrl}/Qr/Websiteurl/DeleteQr/${id}`, {
-      method: "GET",
+      method: "DELETE",
       headers: {
         "content-type": "application/json",
         token: token,
@@ -107,10 +107,11 @@ export const UpdatePlayStoreQr = async (data) => {
 //--------------------Delete Qr----------------//
 
 export const DeletePlayStoreQr = async (id) => {
+  console.log(id)
   let token = localStorage.getItem("token");
   try {
     let result = await fetch(`${BaseUrl}/PlayStore/PlayStore/DeleteQr/${id}`, {
-      method: "GET",
+      method: "DELETE",
       headers: {
         "content-type": "application/json",
         token: token,
@@ -171,7 +172,7 @@ export const DeleteAudioQr = async (id) => {
   let token = localStorage.getItem("token");
   try {
     let result = await fetch(`${BaseUrl}/audioQr/Audio/DeleteQr/${id}`, {
-      method: "GET",
+      method: "DELETE",
       headers: {
         "content-type": "application/json",
         token: token,
@@ -232,7 +233,7 @@ export const DeleteVideoQr = async (id) => {
   let token = localStorage.getItem("token");
   try {
     let result = await fetch(`${BaseUrl}/VideoQr/Video/DeleteQr/${id}`, {
-      method: "GET",
+      method: "DELETE",
       headers: {
         "content-type": "application/json",
         token: token,
@@ -293,7 +294,7 @@ export const DeletedocumentQr = async (id) => {
   let token = localStorage.getItem("token");
   try {
     let result = await fetch(`${BaseUrl}/document/document/DeleteQr/${id}`, {
-      method: "GET",
+      method: "DELETE",
       headers: {
         "content-type": "application/json",
         token: token,
@@ -354,7 +355,7 @@ export const DeleteImageQr = async (id) => {
   let token = localStorage.getItem("token");
   try {
     let result = await fetch(`${BaseUrl}/ImageQr/Image/DeleteQr/${id}`, {
-      method: "GET",
+      method: "DELETE",
       headers: {
         "content-type": "application/json",
         token: token,
@@ -418,7 +419,7 @@ export const DeleteSocialQr = async (id) => {
     let result = await fetch(
       `${BaseUrl}/socialmedia/SocialMediaurl/DeleteQr/${id}`,
       {
-        method: "GET",
+        method: "DELETE",
         headers: {
           "content-type": "application/json",
           token: token,
@@ -482,7 +483,7 @@ export const DeleteMapQr = async (id) => {
   let token = localStorage.getItem("token");
   try {
     let result = await fetch(`${BaseUrl}/Map/Googlemap/DeleteQr/${id}`, {
-      method: "GET",
+      method: "DELETE",
       headers: {
         "content-type": "application/json",
         token: token,

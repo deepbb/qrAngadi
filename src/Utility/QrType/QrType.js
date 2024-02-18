@@ -31,13 +31,13 @@ export const QrType = [
     Image:Multi
   },
   {
-    name: "PlayStore",
-    type: "PlayStore",
+    name: "Playstore",
+    type: "playstore",
     Image:App
   },
   {
     name: "Images",
-    type: "Images",
+    type: "Image",
     Image:Image
   },
   {

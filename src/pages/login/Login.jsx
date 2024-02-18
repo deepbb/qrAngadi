@@ -40,6 +40,7 @@ function Login() {
         console.log('Signin successful:', data);
         alert("Successfully Created Account")
 
+        localStorage.setItem("token",data.token)
         localStorage.setItem('userData', JSON.stringify(formData));
         navigate('/');
         // You can add further logic for successful signup

@@ -43,7 +43,7 @@ export const Dot = [
 
 export const Cornor = [
   {
-    name: "Square",
+    name: "square",
     Image: Squre,
   },
   {
@@ -51,46 +51,43 @@ export const Cornor = [
     Image: SqureDot,
   },
   {
-    name:"extra rounded",
+    name:"extra-rounded",
     Image: SqureExtraRound
   },
   {
     name:"dot squre",
     Image:SqureofSqure
   },
-  {
-    name: "squre-dot",
-    Image: Squre2Dot,
-  },
-  {
-    name:"dots",
-    Image:Sdots,
-  },
-  {
-    name:"dots in squre",
-    Image:DotinSqure, 
-  },
-  {
-    name:"dots in circle",
-    Image:DotinCircle
-  }
+  // {
+  //   name: "squre-dot",
+  //   Image: Squre2Dot,
+  // },
+  // {
+  //   name:"dots",
+  //   Image:Sdots,
+  // },
+  // {
+  //   name:"dots in squre",
+  //   Image:DotinSqure, 
+  // },
+  // {
+  //   name:"dots in circle",
+  //   Image:DotinCircle
+  // }
 ];
 
 export const Square = [
   {
-    name: "Square Dot",
+    name: "dot",
     Image: Squre2Dot,
   },
   {
-    name: "Square",
-    Image: dot1,
-  },
-  {
-    name: "dots",
+    name: "square",
     Image: dot1,
   },
   {
     name: "extra-rounded",
     Image: dot1,
   },
+
 ];

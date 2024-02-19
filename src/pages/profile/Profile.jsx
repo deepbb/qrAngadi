@@ -26,12 +26,13 @@ import { useNavigate } from "react-router-dom";
 
 function Profile() {
   const [data, setData] = useState([]);
+  const [id,setId]=useState("")
   const navigate = useNavigate();
 
   const Profile = () => {
     GetProfile().then((res) => {
       setData(res.data.Qr.reverse());
-      console.log(res);
+      setId(res.data._id)
     });
   };
   useEffect(() => {
@@ -221,6 +222,7 @@ function Profile() {
                           src={Graph}
                           alt=""
                           style={{ width: 40, height: 40, padding: 0 }}
+                          onClick={()=>navigate('/dashboard/' + item._id)}
                         />
                         <img
                           src={Download}

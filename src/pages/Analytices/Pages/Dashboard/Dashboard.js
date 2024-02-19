@@ -1,15 +1,16 @@
 import React, { useState, createRef, useRef, useEffect } from "react";
 import "./Dashboard.css";
-import Logo from "../../Images/logo.png";
+import Logo from "../../.././../assets/awtlogo.png";
 import Overview from "../../Images/overviewBtn.png";
 import Logout from "../../Images/Logout.png";
-import Profile from "../../Images/logo192.png";
+import Profile from "../../.././../assets/awtlogo.png";
 import Form from "react-bootstrap/Form";
 import High from "../../Images/high.png";
 import { DatePicker } from "antd";
 import { Lines } from "../../Charts/Line";
 import exportimg from "../../Images/export.png";
 import barimg from "../../Images/bar.png";
+import { useLocation, useParams } from "react-router-dom";
 // import pieimg from "../../Images/pie.png";
 // import Tableimg from "../../Images/table.png";
 import Lineimg from "../../Images/Lineimg.png";
@@ -28,9 +29,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import moment from "moment/moment";
 import Dropdown from "react-bootstrap/Dropdown";
-import { FetchRange } from "../../Api";
+
 import { SpinnerRoundOutlined, SpinnerCircularFixed } from "spinners-react";
 import GeoGraph, { Geo } from "../../Charts/Geo";
+import { GetAnalytices } from "../../../../Api/Users";
 // import { useScreenshot } from "use-react-screenshot";
 // import { WhatsappIcon, WhatsappShareButton } from "react-share";
 
@@ -44,6 +46,17 @@ const ImageDownload = (uri) => {
 };
 
 const Dashboard = () => {
+  const location = useLocation();
+  const [shouldImportBootstrap, setShouldImportBootstrap] = useState(true);
+  useEffect(() => {
+    const isDashboardPage = location.pathname === "/dashboard";
+    setShouldImportBootstrap(isDashboardPage);
+  }, [location.pathname]);
+
+  // Import Bootstrap CSS if the condition is met
+  if (shouldImportBootstrap) {
+    import("bootstrap/dist/css/bootstrap.min.css");
+  }
   const [select, setselect] = useState(0);
   const [select1, setselect1] = useState(1);
   const [select2, setselect2] = useState(0);
@@ -79,9 +92,11 @@ const Dashboard = () => {
   const browsers = [];
   const devices = [];
   const map = [];
-  const State=[]
+  const State = [];
 
   const navigate = useNavigate();
+  const { id } = useParams();
+
   const LogoutUser = () => {
     localStorage.clear("user");
     toast("Logout Successfully");
@@ -102,7 +117,7 @@ const Dashboard = () => {
     browsers.push(Browser);
     devices.push(device);
     map.push(maps);
-    State.push(city)
+    State.push(city);
 
     const workbook = XLSX.utils.book_new();
     const worksheet = XLSX.utils.json_to_sheet(doc);
@@ -148,10 +163,7 @@ const Dashboard = () => {
 
   //---------------------------Get Range Api Call---------------------------//
   const getRangeData = () => {
-    if (!qr_code_name || qr_code_name === "Select Product") {
-      toast("Product Name Required");
-      return false;
-    } else if (!startDate) {
+     if (!startDate) {
       toast("Start Date Required");
       return false;
     } else if (!endDate) {
@@ -159,20 +171,25 @@ const Dashboard = () => {
     }
 
     setLoad(true);
-    FetchRange(qr_code_name, startDate, endDate)
+    GetAnalytices({
+      startDate: startDate,
+      EndDate: endDate,
+      QrId: id,
+    })
       .then((res) => {
+        console.log(res)
         setData(res.month);
         setTotalscan(res.TotalScans);
         setWeek(res.week);
         setDatetype(res.date);
         setBrowser(res.Browser);
         setOs(res.Os);
-        setDevice(res.device);
+        // setDevice(res.device);
         setTime(res.time);
         setLoad(false);
         setDocument(res.result);
         setMap(res.map);
-        setCity(res.citycode);
+        // setCity(res.citycode);
       })
       .catch((err) => {
         setLoad(false);
@@ -202,7 +219,7 @@ const Dashboard = () => {
               }}
             >
               <div className="text-center">
-                <img className="mt-4" style={{ width: 130 }} src={Logo}></img>
+                <img className="mt-4" style={{ width: 130,backgroundColor:"#fff",padding:10,borderRadius:10 }} src={Logo}></img>
               </div>
               <div className="text-center" onClick={() => setDashBoard(false)}>
                 <img
@@ -236,7 +253,7 @@ const Dashboard = () => {
                   </p>
                 )}
               </div> */}
-              <div className="text-center" onClick={() => LogoutUser()}>
+              {/* <div className="text-center" onClick={() => LogoutUser()}>
                 <img
                   style={{
                     marginTop: "30px",
@@ -247,7 +264,7 @@ const Dashboard = () => {
                   }}
                   src={Logout}
                 ></img>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -312,7 +329,7 @@ const Dashboard = () => {
                       <img
                         className="d-lg-block d-md-none d-sm-none d-none"
                         src={Profile}
-                        style={{ height: 40, width: 40, borderRadius: 50 }}
+                        style={{ height: 40, width: 40, borderRadius: 50,backgroundColor:"#fff",padding:10,borderRadius:50 }}
                       ></img>
 
                       <div className="mt-1">
@@ -324,7 +341,7 @@ const Dashboard = () => {
                             marginLeft: 5,
                           }}
                         >
-                          Emami Adwin
+                          Awt Users
                         </p>
                         <p
                           style={{
@@ -340,11 +357,11 @@ const Dashboard = () => {
                       </div>
                     </div>
 
-                    <Dropdown.Menu>
+                    {/* <Dropdown.Menu>
                       <Dropdown.Item onClick={() => LogoutUser()}>
                         Logout
                       </Dropdown.Item>
-                    </Dropdown.Menu>
+                    </Dropdown.Menu> */}
                   </Dropdown>
                 </div>
               )}
@@ -401,8 +418,8 @@ const Dashboard = () => {
                       /> 
                     </div> */}
 
-                    <div className="col-lg-3 col-md-4 col-sm-6 col-6">
-                      <Form.Select
+                    {/* <div className="col-lg-3 col-md-4 col-sm-6 col-6"> */}
+                    {/* <Form.Select
                         style={{
                           backgroundColor: "rgba(20, 19, 50, 1)",
                           color: "#fff",
@@ -416,8 +433,8 @@ const Dashboard = () => {
                         <option value="Boroplus">Boroplus</option>
                         <option value="Zandu">Zandu</option>
                         <option value="Creme">Creme</option>
-                      </Form.Select>
-                    </div>
+                      </Form.Select> */}
+                    {/* </div> */}
                     <div className="col-lg-3 col-md-4 col-sm-6 col-6 mt-lg-0 mt-md-0 mt-sm-0 mt-0">
                       <RangePicker
                         style={{
@@ -451,8 +468,8 @@ const Dashboard = () => {
                         />
                       ) : (
                         <p
-                          style={{ width: "100%" }}
-                          className="btn btn-primary"
+                          style={{ width: "100%", backgroundColor: "#F48020" }}
+                          className="btn"
                           onClick={() => getRangeData()}
                         >
                           Get Analytics

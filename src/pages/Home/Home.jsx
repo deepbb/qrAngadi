@@ -14,7 +14,7 @@ function Home() {
       <QRcode />
       <Footer />
     </div>
-  );c
+  );
 }
 
 export default Home;

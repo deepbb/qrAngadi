@@ -49,8 +49,8 @@ function Login() {
         // You can add further logic for successful signup
       } else {
         const errorData = await response.json();
-        console.error("Sigin failed:", errorData);
-        alert(errorData.message);
+        console.error('Sigin failed:', errorData);
+        alert(errorData.message)
         // You can handle errors appropriately
       }
     } catch (error) {
@@ -59,55 +59,49 @@ function Login() {
     }
   };
   return (
-    <div className="signup">
-      <div className="signup_form">
-        <img src={SignupForm} alt="" className="form_background" />
-        <div className="signup_container">
-          <div className="signup_logo">
-            <img src={Logo} alt="" style={{ width: "70%" }} />
-          </div>
-          <div className="form_container">
-            <span style={{ fontFamily: "Poppins", fontSize: 16 }}>Sign in</span>
-            <span style={{ fontSize: 14 }}>New user?</span>{" "}
-            <span style={{ fontSize: 14, color: "#F48020" }}>sigup</span>
-            <form onSubmit={handleSubmit} className="submit_form">
-              <div className="name_form"></div>
-              <input
-                type="email"
-                id="email"
-                name="Email"
-                value={formData.Email}
-                onChange={handleChange}
-                required
-                className="input"
-                placeholder="Email"
-              />
-              <input
-                type="password"
-                id="password"
-                name="Password"
-                value={formData.Password}
-                onChange={handleChange}
-                required
-                className="input"
-                placeholder="Password"
-              />
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <input
-                  type="checkbox"
-                  id="keepSignedIn"
-                  name="keepSignedIn"
-                  checked={isChecked}
-                  onChange={handleCheckboxChange}
-                />
-                <label htmlFor="keepSignedIn">Keep me signed in</label>
+    <div className='signup'>
+       <div className='signup_form'>
+            <img src={SignupForm} alt='' className='form_background' />
+            <div className='signup_container'>
+              <div className='signup_logo'>
+                  <img src={Logo} alt='' style={{width:"70%"}} />
               </div>
+              <div className='form_container'>
+                <span style={{fontFamily:'Poppins',fontSize:16}}>Sign in</span>
+                <span style={{fontSize:14}}>New user?</span> <span style={{fontSize:14,color:'#F48020'}}>sigup</span>
+              <form onSubmit={handleSubmit} className='submit_form' >
+                <div className='name_form'>
+      </div>
+      <input
+        type="email"
+        id="email"
+        name="Email"
+        value={formData.Email}
+        onChange={handleChange}
+        required
+        className='input'
+        placeholder='Email'
+      />
+      <input
+        type="password"
+        id="password"
+        name="Password"
+        value={formData.Password}
+        onChange={handleChange}
+        required
+        className='input'
+        placeholder='Password'
+      />
+      <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+      <input
+        type="checkbox"
+        id="keepSignedIn"
+        name="keepSignedIn"
+        checked={isChecked}
+        onChange={handleCheckboxChange}
+      />
+      <label htmlFor="keepSignedIn">Keep me signed in</label>
+</div>
 
               <button type="submit" className="submit">
                 SignIn

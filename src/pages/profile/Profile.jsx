@@ -28,6 +28,11 @@ function Profile() {
   const [data, setData] = useState([]);
   const [id,setId]=useState("")
   const navigate = useNavigate();
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
 
   const Profile = () => {
     GetProfile().then((res) => {
@@ -137,7 +142,16 @@ function Profile() {
         </div>
       </div>
       <div className="main-section">
+        <div className="qr-headingtext">
         <h1 style={{ marginLeft: 20 }}>My QR Codes</h1>
+        <div className="profile-tab" onClick={toggleDropdown} >
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <IoPersonCircleSharp size={25} />
+            <span style={{ fontSize: 16,marginLeft:5 }}>Sravan Kumar</span>
+          </div>
+          <MdKeyboardArrowDown size={25} onClick={toggleDropdown} />
+        </div>
+        </div>
         <span style={{ marginLeft: 20 }}>
           Create, view, edit, design, and download QR Codes
         </span>
@@ -189,7 +203,9 @@ function Profile() {
               </tr>
             </thead>
 
-            {data && data.length > 0
+        
+
+             {data && data.length > 0
               ? data.map((item, index) => (
                   <tbody>
                     <tr className="tableRow">
@@ -242,18 +258,12 @@ function Profile() {
                     </tr>
                   </tbody>
                 ))
-              : null}
+              : null} 
           </table>
         </div>
       </div>
+      { dropdownVisible && 
       <div className="rightbar">
-        <div className="profile-tab">
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <IoPersonCircleSharp size={25} />
-            <span style={{ fontSize: 12 }}>Sravan Kumar</span>
-          </div>
-          <MdKeyboardArrowDown size={25} />
-        </div>
         <div className="rightTab-containetr">
           <div className="rightbar-tabs">
             <img
@@ -273,7 +283,7 @@ function Profile() {
             />
             <span style={{ marginLeft: 10, color: "#3D3D3D", fontSize: 15 }}>
               My Subscription
-            </span>
+            </span>  
           </div>
           <div className="rightbar-tabs">
             <img
@@ -297,6 +307,7 @@ function Profile() {
           </div>
         </div>
       </div>
+      }
     </div>
   );
 }

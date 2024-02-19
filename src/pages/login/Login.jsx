@@ -3,6 +3,7 @@ import "./Login.css";
 import SignupForm from "../signup/Group 6741@2x.png";
 import Logo from "../signup/Group 6742.png";
 import { useNavigate } from "react-router-dom";
+import { BaseUrl } from "../../Api/BaseUrl";
 
 function Login() {
   const [isChecked, setChecked] = useState(false);
@@ -15,7 +16,8 @@ function Login() {
   const [formData, setFormData] = useState({
     Email: "",
     Password: "",
-  });
+  });   
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +30,7 @@ function Login() {
     console.log("Form submitted:", formData);
     try {
       const response = await fetch(
-        "http://103.120.176.158:9100/api/v1/Users/Signin",
+        `${BaseUrl}/Users/Signin`,
         {
           method: "POST",
           headers: {
@@ -71,6 +73,7 @@ function Login() {
                 <span style={{fontSize:14}}>New user?</span> <span style={{fontSize:14,color:'#F48020'}}>sigup</span>
               <form onSubmit={handleSubmit} className='submit_form' >
                 <div className='name_form'>
+                
       </div>
       <input
         type="email"

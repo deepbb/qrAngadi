@@ -1,20 +1,20 @@
-import React, { useState } from 'react'
-import "./Login.css"
-import SignupForm from "../signup/Group 6741@2x.png"
-import Logo from "../signup/Group 6742.png"
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Login.css";
+import SignupForm from "../signup/Group 6741@2x.png";
+import Logo from "../signup/Group 6742.png";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-    const [isChecked, setChecked] = useState(false);
+  const [isChecked, setChecked] = useState(false);
 
-    const handleCheckboxChange = () => {
-      setChecked(!isChecked);
-    };
-  
+  const handleCheckboxChange = () => {
+    setChecked(!isChecked);
+  };
+
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    Email: '',
-    Password: '',
+    Email: "",
+    Password: "",
   });
 
   const handleChange = (e) => {
@@ -22,38 +22,41 @@ function Login() {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Add your logic here to handle form submission
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
     try {
-      const response = await fetch('http://103.120.176.158:9100/api/v1/Users/Signin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "http://103.120.176.158:9100/api/v1/Users/Signin",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
-        console.log('Signin successful:', data);
-        alert("Successfully Created Account")
+        console.log("Signin successful:", data);
+        alert("Successfully Created Account");
 
-        localStorage.setItem('userData', JSON.stringify(formData));
-        navigate('/');
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("userData", JSON.stringify(formData));
+        navigate("/");
         // You can add further logic for successful signup
       } else {
         const errorData = await response.json();
         console.error('Sigin failed:', errorData);
-        alert("Error Logging in")
+        alert(errorData.message)
         // You can handle errors appropriately
       }
     } catch (error) {
-      console.error('Error during sigin:', error.message);
-      alert(error.message)
+      console.error("Error during sigin:", error.message);
+      alert(error.message);
     }
-
   };
   return (
     <div className='signup'>
@@ -61,7 +64,7 @@ function Login() {
             <img src={SignupForm} alt='' className='form_background' />
             <div className='signup_container'>
               <div className='signup_logo'>
-                  <img src={Logo} alt='' style={{width:"60%"}} />
+                  <img src={Logo} alt='' style={{width:"70%"}} />
               </div>
               <div className='form_container'>
                 <span style={{fontFamily:'Poppins',fontSize:16}}>Sign in</span>
@@ -100,14 +103,15 @@ function Login() {
       <label htmlFor="keepSignedIn">Keep me signed in</label>
 </div>
 
-
-      <button type="submit" className='submit'>SignIn</button>
-    </form>
-              </div>
-            </div>
-       </div>
+              <button type="submit" className="submit">
+                SignIn
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

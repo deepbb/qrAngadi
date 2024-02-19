@@ -109,11 +109,12 @@ export const UpdateProfile = async (data) => {
 
 //-------------------Get Analytices--------------------//
 
-export const GetAnalytices = async () => {
+export const GetAnalytices = async (data) => {
   let token = localStorage.getItem("token");
   try {
     let result = await fetch(`${BaseUrl}/Scan/Scan/getanalytices`, {
-      method: "GET",
+      method: "POST",
+      body: JSON.stringify(data),
       headers: {
         "content-type": "application/json",
         token: token,

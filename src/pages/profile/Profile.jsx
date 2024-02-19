@@ -23,23 +23,29 @@ import Help from "../../assets/help.svg";
 import { GetProfile } from "../../Api/Users";
 import { DeleteProfileQr } from "../../Utility/QrType/DeleteQr";
 import { useNavigate } from "react-router-dom";
+import { SpinnerRoundOutlined, SpinnerCircularFixed } from "spinners-react";
 
 function Profile() {
   const [data, setData] = useState([]);
-  const [id,setId]=useState("")
+  const [id, setId] = useState("");
   const navigate = useNavigate();
-  const [dropdownVisible, setDropdownVisible] = useState(false);
-
-  const toggleDropdown = () => {
-    setDropdownVisible(!dropdownVisible);
-  };
 
   const Profile = () => {
+    setLoad(true);
     GetProfile().then((res) => {
       setData(res.data.Qr.reverse());
-      setId(res.data._id)
+      setId(res.data._id);
+      setLoad(false);
     });
   };
+
+  const filteredData = data.filter(
+    (item) =>
+      item._id.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.Qrtype?.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.Url?.toLowerCase().includes(filterText.toLowerCase())
+  );
+
   useEffect(() => {
     Profile();
   }, []);
@@ -64,7 +70,8 @@ function Profile() {
   };
 
   const DeleteQr = (id, type) => {
-    let res = DeleteProfileQr(id, type, Profile);
+    setLoad(true);
+    let res = DeleteProfileQr(id, type, Profile, ChangeLoad);
   };
 
   const handleDownload = (imageUrl, fileName) => {
@@ -77,6 +84,27 @@ function Profile() {
   };
   return (
     <div className="profile-container">
+      {load ? (
+        <SpinnerCircularFixed
+          size={30}
+          thickness={200}
+          speed={133}
+          color="rgba(172, 57, 59, 1)"
+          secondaryColor="rgba(57, 172, 102, 1)"
+          className="btn btn-primary"
+          style={{
+            width: 50,
+            height: 50,
+            backgroundColor: "#fff",
+            padding: 10,
+            borderRadius: 10,
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+          }}
+        />
+      ) : null}
+
       <div className="sidebar">
         <div className="logo-image-container">
           <img
@@ -161,7 +189,12 @@ function Profile() {
               <span className="profile-search-name">Name</span>
               <MdKeyboardArrowDown size={25} />
             </div>
-            <input type="text" placeholder="search" className="search-input" />
+            <input
+              type="text"
+              placeholder="search"
+              className="search-input"
+              onChange={(e) => setFilterText(e.target.value)}
+            />
             <div style={{ position: "absolute", right: 90 }}>
               <MdOutlineSearch />
             </div>
@@ -170,7 +203,10 @@ function Profile() {
               <MdFileDownload size={23} />
             </div>
           </div>
-          <div className="create-qr">
+          <div
+            className="create-qr"
+            onClick={() => navigate("/qrcodesolutions")}
+          >
             <img
               src={CreateQR}
               alt=""
@@ -205,7 +241,7 @@ function Profile() {
 
         
 
-             {data && data.length > 0
+            {data && data.length > 0
               ? data.map((item, index) => (
                   <tbody>
                     <tr className="tableRow">
@@ -238,7 +274,7 @@ function Profile() {
                           src={Graph}
                           alt=""
                           style={{ width: 40, height: 40, padding: 0 }}
-                          onClick={()=>navigate('/dashboard/' + item._id)}
+                          onClick={() => navigate("/dashboard/" + item._id)}
                         />
                         <img
                           src={Download}

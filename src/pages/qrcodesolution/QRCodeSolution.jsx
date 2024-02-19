@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import "./QRCodeSolution.css";
+import { SpinnerRoundOutlined, SpinnerCircularFixed } from "spinners-react";
 import WhatsApp from "../../assets/whatsapp.svg";
 import Insta from "../../assets/insta.png";
 import Facebook from "../../assets/fb.png";
@@ -69,6 +70,12 @@ function QRCodeSolution() {
   const toggleColorPicker3 = () => {
     setShowColorPicker3(!showColorPicker3);
   };
+
+  const [load, setLoad] = useState(false);
+
+  const ChangeLoad=()=>{
+    setLoad(false);
+  }
 
   const [dotColor, setDotColor] = useState({
     r: "241",
@@ -219,6 +226,7 @@ function QRCodeSolution() {
       alert("Qr Data is Required");
       return false;
     }
+    setLoad(true)
     if (images) {
       const data = new FormData();
       data.append("file", images);
@@ -242,7 +250,8 @@ function QRCodeSolution() {
           cornertype,
           file.secure_url,
           Url,
-          navigate
+          navigate,
+          ChangeLoad
         );
       }
     } else {
@@ -256,7 +265,8 @@ function QRCodeSolution() {
         cornertype,
         Url,
         Url,
-        navigate
+        navigate,
+        ChangeLoad
       );
     }
   };
@@ -267,6 +277,7 @@ function QRCodeSolution() {
         <Navbar />
       </div>
       <div className="mainContainer">
+        {" "}
         {/* <div className="tabs">
           <button className="btn-tab">Individual</button>
           <button className="btn-tab">Compliance</button>
@@ -335,7 +346,9 @@ function QRCodeSolution() {
                 type="radio"
                 value="option1"
                 checked={selectedOption === "option1"}
-                onChange={() => (setDyanmic(true),setSelectedOption("option1"))}
+                onChange={() => (
+                  setDyanmic(true), setSelectedOption("option1")
+                )}
                 className="radio-btn"
               />
               Dynamic
@@ -346,7 +359,9 @@ function QRCodeSolution() {
                 type="radio"
                 value="option2"
                 checked={selectedOption === "option2"}
-                onChange={() => (setDyanmic(false),setSelectedOption("option2"))}
+                onChange={() => (
+                  setDyanmic(false), setSelectedOption("option2")
+                )}
                 className="radio-btn"
               />
               Static
@@ -700,12 +715,32 @@ function QRCodeSolution() {
             <img src={logo} className="preview-image" alt="" />
           </div> */}
           <div className="button-section">
-            {
-              dyanmic?<button className="create-qrbtn" onClick={GenerateDyamicqr}>
-              Create QR Code <IoIosArrowDown size={25} />
-            </button>:null
-            }
-            
+            {dyanmic ? (
+              <>
+                {load ? (
+                  <SpinnerCircularFixed
+                    size={30}
+                    thickness={200}
+                    speed={133}
+                    color="rgba(172, 57, 59, 1)"
+                    secondaryColor="rgba(57, 172, 102, 1)"
+                    className="btn btn-primary"
+                    style={{
+                      width: 50,
+                      height: 50,
+                      backgroundColor: "#fff",
+                      padding: 10,
+                      borderRadius: 10,
+                    }}
+                  />
+                ) : (
+                  <button className="create-qrbtn" onClick={GenerateDyamicqr}>
+                    Create QR Code <IoIosArrowDown size={25} />
+                  </button>
+                )}
+              </>
+            ) : null}
+
             {/* <span className="btn-text">Download</span> */}
             <select
               className="create-qrbtn"

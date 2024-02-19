@@ -163,7 +163,7 @@ const Dashboard = () => {
 
   //---------------------------Get Range Api Call---------------------------//
   const getRangeData = () => {
-     if (!startDate) {
+    if (!startDate) {
       toast("Start Date Required");
       return false;
     } else if (!endDate) {
@@ -177,7 +177,7 @@ const Dashboard = () => {
       QrId: id,
     })
       .then((res) => {
-        console.log(res)
+        console.log(res);
         setData(res.month);
         setTotalscan(res.TotalScans);
         setWeek(res.week);
@@ -219,7 +219,16 @@ const Dashboard = () => {
               }}
             >
               <div className="text-center">
-                <img className="mt-4" style={{ width: 130,backgroundColor:"#fff",padding:10,borderRadius:10 }} src={Logo}></img>
+                <img
+                  className="mt-4"
+                  style={{
+                    width: 130,
+                    backgroundColor: "#fff",
+                    padding: 10,
+                    borderRadius: 10,
+                  }}
+                  src={Logo}
+                ></img>
               </div>
               <div className="text-center" onClick={() => setDashBoard(false)}>
                 <img
@@ -329,7 +338,14 @@ const Dashboard = () => {
                       <img
                         className="d-lg-block d-md-none d-sm-none d-none"
                         src={Profile}
-                        style={{ height: 40, width: 40, borderRadius: 50,backgroundColor:"#fff",padding:10,borderRadius:50 }}
+                        style={{
+                          height: 40,
+                          width: 40,
+                          borderRadius: 50,
+                          backgroundColor: "#fff",
+                          padding: 10,
+                          borderRadius: 50,
+                        }}
                       ></img>
 
                       <div className="mt-1">

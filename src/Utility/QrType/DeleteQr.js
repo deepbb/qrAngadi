@@ -9,15 +9,17 @@ import {
   DeletedocumentQr,
 } from "../../Api/QR";
 
-export const DeleteProfileQr = (id, type, Profile) => {
+export const DeleteProfileQr = (id, type, Profile,ChangeLoad) => {
   switch (type) {
     case "Website": {
       DeleteWebsiteQr(id).then((res) => {
         console.log(res);
         if (res.message === "Success") {
+          ChangeLoad()
           alert("qr Deleted Success");
           Profile();
         } else {
+          ChangeLoad()
           alert(res);
         }
       });
@@ -28,9 +30,11 @@ export const DeleteProfileQr = (id, type, Profile) => {
       DeletePlayStoreQr(id).then((res) => {
         console.log(res);
         if (res.message === "Success") {
+          ChangeLoad()
           alert("qr Deleted Success");
           Profile();
         } else {
+          ChangeLoad()
           alert(res);
         }
       });
@@ -39,9 +43,11 @@ export const DeleteProfileQr = (id, type, Profile) => {
     case "Audio": {
       DeleteAudioQr(id).then((res) => {
         if (res.message === "Success") {
+          ChangeLoad()
           alert("qr Deleted Success");
           Profile();
         } else {
+          ChangeLoad()
           alert(res);
         }
       });
@@ -50,9 +56,11 @@ export const DeleteProfileQr = (id, type, Profile) => {
     case "Video": {
       DeleteVideoQr(id).then((res) => {
         if (res.message === "Success") {
+          ChangeLoad()
           alert("qr Deleted Success");
           Profile();
         } else {
+          ChangeLoad()
           alert(res);
         }
       });
@@ -61,9 +69,11 @@ export const DeleteProfileQr = (id, type, Profile) => {
     case "Image": {
       DeleteImageQr(id).then((res) => {
         if (res.message === "Success") {
+          ChangeLoad()
           alert("qr Deleted Success");
           Profile();
         } else {
+          ChangeLoad()
           alert(res);
         }
       });
@@ -72,9 +82,11 @@ export const DeleteProfileQr = (id, type, Profile) => {
     case "Pdf": {
       DeletedocumentQr(id).then((res) => {
         if (res.message === "Success") {
+          ChangeLoad()
           alert("qr Deleted Success");
           Profile();
         } else {
+          ChangeLoad()
           alert(res);
         }
       });
@@ -83,9 +95,11 @@ export const DeleteProfileQr = (id, type, Profile) => {
     case "Map": {
       DeleteMapQr(id).then((res) => {
         if (res.message === "Success") {
+          ChangeLoad()
           alert("qr deleted Success");
           Profile();
         } else {
+          ChangeLoad()
           alert(res);
         }
       });
@@ -94,9 +108,11 @@ export const DeleteProfileQr = (id, type, Profile) => {
     case "Social": {
       DeleteSocialQr(id).then((res) => {
         if (res.message === "Success") {
+          ChangeLoad()
           alert("qr Deleted Success");
           Profile();
         } else {
+          ChangeLoad()
           alert(res);
         }
       });

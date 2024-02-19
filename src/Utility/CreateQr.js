@@ -19,7 +19,8 @@ export const CreateQr = (
   cornertype,
   logo,
   Url,
-  navigate
+  navigate,
+  ChangeLoad
 ) => {
   switch (type) {
     case "Website": {
@@ -44,9 +45,11 @@ export const CreateQr = (
       }).then((res) => {
         console.log(res);
         if (res.status === "success") {
+          ChangeLoad()
           alert("qr Created Success");
           navigate("/profile");
         } else {
+          ChangeLoad()
           alert(res);
         }
       });
@@ -75,9 +78,11 @@ export const CreateQr = (
       }).then((res) => {
         console.log(res);
         if (res.status === "success") {
+          ChangeLoad()
           navigate("/profile");
           alert("qr Created Success");
         } else {
+          ChangeLoad()
           alert(res);
         }
       });
@@ -104,9 +109,11 @@ export const CreateQr = (
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
+          ChangeLoad()
           navigate("/profile");
           alert("qr Created Success");
         } else {
+          ChangeLoad()
           alert(res);
         }
       });
@@ -133,9 +140,11 @@ export const CreateQr = (
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
+          ChangeLoad()
           navigate("/profile");
           alert("qr Created Success");
         } else {
+          ChangeLoad()
           alert(res);
         }
       });
@@ -162,9 +171,11 @@ export const CreateQr = (
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
+          ChangeLoad()
           navigate("/profile");
           alert("qr Created Success");
         } else {
+          ChangeLoad()
           alert(res);
         }
       });
@@ -191,9 +202,11 @@ export const CreateQr = (
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
+          ChangeLoad()
           navigate("/profile");
           alert("qr Created Success");
         } else {
+          ChangeLoad()
           alert(res);
         }
       });
@@ -220,9 +233,11 @@ export const CreateQr = (
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
+          ChangeLoad()
           navigate("/profile");
           alert("qr Created Success");
         } else {
+          ChangeLoad()
           alert(res);
         }
       });
@@ -249,9 +264,11 @@ export const CreateQr = (
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
+          ChangeLoad()
           navigate("/profile");
           alert("qr Created Success");
         } else {
+          ChangeLoad()
           alert(res);
         }
       });

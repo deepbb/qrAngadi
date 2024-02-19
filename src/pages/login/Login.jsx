@@ -46,7 +46,7 @@ function Login() {
       } else {
         const errorData = await response.json();
         console.error('Sigin failed:', errorData);
-        alert(errorData.message)
+        alert("Error Logging in")
         // You can handle errors appropriately
       }
     } catch (error) {
@@ -61,7 +61,7 @@ function Login() {
             <img src={SignupForm} alt='' className='form_background' />
             <div className='signup_container'>
               <div className='signup_logo'>
-                  <img src={Logo} alt='' style={{width:"70%"}} />
+                  <img src={Logo} alt='' style={{width:"60%"}} />
               </div>
               <div className='form_container'>
                 <span style={{fontFamily:'Poppins',fontSize:16}}>Sign in</span>

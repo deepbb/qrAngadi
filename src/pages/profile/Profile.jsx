@@ -36,6 +36,7 @@ function Profile() {
   const [open, setOpen] = useState(false);
   const [uniqueId, setUniqueId] = useState("");
   const [type, setType] = useState("");
+  const [name,setName]=useState("")
 
   const OpnemOdal = (id, types) => {
     setType(types);
@@ -46,6 +47,10 @@ function Profile() {
   const CloseModal = () => {
     setOpen(false);
   };
+
+  const ChangeLoad=()=>{
+    setLoad(false)
+  }
 
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
@@ -58,6 +63,7 @@ function Profile() {
     GetProfile().then((res) => {
       setData(res.data.Qr.reverse());
       setId(res.data._id);
+      setName(res.data.Name)
       setLoad(false);
     });
   };
@@ -207,7 +213,7 @@ function Profile() {
         <div className="profile-tab" onClick={toggleDropdown} >
           <div style={{ display: "flex", alignItems: "center" }}>
             <IoPersonCircleSharp size={25} />
-            <span style={{ fontSize: 16,marginLeft:5 }}>Sravan Kumar</span>
+            <span style={{ fontSize: 16,marginLeft:5 }}>{name}</span>
           </div>
           <MdKeyboardArrowDown size={25} onClick={toggleDropdown} />
         </div>

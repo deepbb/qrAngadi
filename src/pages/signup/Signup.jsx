@@ -38,8 +38,8 @@ function Signup() {
         console.log('Signup successful:', data);
         alert("Successfully Created Account")
 
-        localStorage.setItem('userData', JSON.stringify(formData));
-        navigate('/');
+        // localStorage.setItem('userData', JSON.stringify(formData));
+        navigate('/login');
         // You can add further logic for successful signup
       } else {
         const errorData = await response.json();

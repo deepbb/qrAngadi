@@ -90,6 +90,10 @@ function Profile() {
     link.click();
     document.body.removeChild(link);
   };
+
+  const navigateHome = ()=> {
+      navigate("/")
+  }
   return (
     <div className="profile-container">
       {load ? (
@@ -118,10 +122,11 @@ function Profile() {
           <img
             src={QRAngadi}
             alt=""
-            style={{ width: 100, height: 100, objectFit: "contain" }}
+            style={{ width: 100, height: 100, objectFit: "contain",cursor:'pointer'}}
+            onClick={navigateHome}
           />
         </div>
-        <div className="home-link">
+        <div className="home-link" onClick={navigateHome}>
           <div className="logo-box-image">
             <img src={Home} alt="" style={{ width: 20, height: 20 }} />
           </div>
@@ -193,10 +198,10 @@ function Profile() {
         </span>
         <div className="qr-wraper">
           <div className="qr-input-container">
-            <div className="name-box">
+            {/* <div className="name-box">
               <span className="profile-search-name">Name</span>
               <MdKeyboardArrowDown size={25} />
-            </div>
+            </div> */}
             <input
               type="text"
               placeholder="search"
@@ -275,19 +280,19 @@ function Profile() {
                         <img
                           src={View}
                           alt=""
-                          style={{ width: 40, height: 40, padding: 0 }}
+                          style={{ width: 40, height: 40, padding: 0,cursor:'pointer' }}
                           onClick={() => openQrInNewWindow(item.QrImage)}
                         />
                         <img
                           src={Graph}
                           alt=""
-                          style={{ width: 40, height: 40, padding: 0 }}
+                          style={{ width: 40, height: 40, padding: 0,cursor:'pointer'}}
                           onClick={() => navigate("/dashboard/" + item._id)}
                         />
                         <img
                           src={Download}
                           alt=""
-                          style={{ width: 40, height: 40, padding: 0 }}
+                          style={{ width: 40, height: 40, padding: 0,cursor:'pointer' }}
                           onClick={() =>
                             handleDownload(item.QrImage, `QR_${item._id}`)
                           }
@@ -295,7 +300,7 @@ function Profile() {
                         <img
                           src={Close}
                           alt=""
-                          style={{ width: 40, height: 40, padding: 0 }}
+                          style={{ width: 40, height: 40, padding: 0,cursor:'pointer' }}
                           onClick={() => DeleteQr(item._id, item.Qrtype)}
                         />
                       </td>

@@ -40,6 +40,10 @@
     font-family: Poppins;
     cursor: pointer;
     font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .baseimage {
     width: 100%;
@@ -342,9 +346,10 @@
   .profileinfo {
     margin-left: 10px;
   }
-  .profile-container {
+  .profile-containerQR {
     display: flex;
     margin: 20px 20px 0 20px;
+    padding: 5px;
   }
   .name {
     font-family: Poppins;

@@ -53,20 +53,21 @@
     display: flex;
 }
 .input {
-    width: 250px;
+    width: 300px;
     margin-top: 10px;
     height:40px;
     background-color: #EDEDED;
     border-style: none;
+    padding-left: 5px;
 }
 .input::placeholder {
-    padding-left: 5px;
+    padding-left: 2px;
 }
 .input:focus {
     outline: none;
 }
 .firstname_input {
-width: 112px;
+width: 135px;
 height: 40px;
 background-color: #EDEDED;
 border-style: none;
@@ -74,11 +75,11 @@ border-style: none;
 .firstname_input:focus {
     outline: none;
 }
-.firstname_input {
+/* .firstname_input {
     padding-left: 5px;
-}
+}  */
 .lastname_input {
-width: 112px;
+width: 135px;
 margin-left: 20px;
 height: 40px;
 background-color: #EDEDED;
@@ -91,7 +92,7 @@ border-style: none;
     padding-left: 5px;
 }
 .submit {
-    width: 250px;
+    width: 305px;
     height: 40px;
     margin-top: 20px;
     background-color: #F48020;
@@ -110,7 +111,7 @@ background-color: red;
 .signup_heading {
     display: flex;
     flex-direction: column;
-    margin-right:20%;
+    margin-right:38%;
 }
 input[type=checkbox] {
     accent-color:#F48020;

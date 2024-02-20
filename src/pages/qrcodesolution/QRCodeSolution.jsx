@@ -53,6 +53,9 @@ function QRCodeSolution() {
     useState(-1);
   const [qrTypeSelection, setQrTypeSelection] = useState(-1);
 
+  const [lat, setLat] = useState("");
+  const [lon, setLon] = useState("");
+
   const [qrType, setQrType] = useState("");
   const [Url, setUrl] = useState("");
 
@@ -75,7 +78,7 @@ function QRCodeSolution() {
 
   const ChangeLoad = () => {
     setLoad(false);
-  }
+  };
 
   const [dotColor, setDotColor] = useState({
     r: "241",
@@ -154,6 +157,7 @@ function QRCodeSolution() {
   useEffect(() => {
     setOptions((options) => ({
       ...options,
+      data: `${lat} ${lon}`,
       image: logo,
       backgroundOptions: {
         ...options.backgroundOptions,
@@ -184,6 +188,8 @@ function QRCodeSolution() {
     logo,
     cornerdottype,
     cornertype,
+    lat,
+    lon,
   ]);
 
   const onDataChange = (event) => {
@@ -222,11 +228,11 @@ function QRCodeSolution() {
     if (!qrType) {
       alert("Qr Type Is Required");
       return false;
-    } else if (!Url) {
+    } else if (qrType != "Map" ? !Url : !lat || !lon) {
       alert("Qr Data is Required");
       return false;
     }
-    setLoad(true)
+    setLoad(true);
     if (images) {
       const data = new FormData();
       data.append("file", images);
@@ -251,7 +257,9 @@ function QRCodeSolution() {
           file.secure_url,
           Url,
           navigate,
-          ChangeLoad
+          ChangeLoad,
+          lat,
+          lon
         );
       }
     } else {
@@ -266,7 +274,9 @@ function QRCodeSolution() {
         Url,
         Url,
         navigate,
-        ChangeLoad
+        ChangeLoad,
+        lat,
+        lon
       );
     }
   };
@@ -330,16 +340,47 @@ function QRCodeSolution() {
       <div className="mainContainer2">
         <div className="customize">
           <button className="customize-button">Customize</button>
-          <input
-            style={{
-              width: 500,
-              height: 40,
-              borderWidth: 2,
-              borderRadius: 5,
-            }}
-            value={options.data}
-            onChange={onDataChange}
-          />
+          {qrType === "Map" ? (
+            <>
+              <input
+                style={{
+                  width: 300,
+                  height: 40,
+                  borderWidth: 2,
+                  borderRadius: 5,
+                  paddingLeft: 8,
+                }}
+                placeholder="Enter latitude"
+                value={lat}
+                onChange={(e) => setLat(e.target.value)}
+              />
+              <input
+                style={{
+                  width: 300,
+                  height: 40,
+                  borderWidth: 2,
+                  borderRadius: 5,
+                  paddingLeft: 8,
+                }}
+                placeholder="Enter Longitude"
+                value={lon}
+                onChange={(e) => setLon(e.target.value)}
+              />
+            </>
+          ) : (
+            <input
+              style={{
+                width: 500,
+                height: 40,
+                borderWidth: 2,
+                borderRadius: 5,
+              }}
+              placeholder="Enter Url"
+              value={options.data}
+              onChange={onDataChange}
+            />
+          )}
+
           <div className="radio-container">
             <label>
               <input
@@ -467,7 +508,7 @@ function QRCodeSolution() {
               </div>
 
               {showColorPicker && (
-                <div style={{ position: "relative", bottom: 60, left: 200 }}>
+                <div style={{ position: "absolute" }}>
                   <SketchPicker
                     onChange={(color) => {
                       setDotColor(color.rgb);
@@ -506,7 +547,8 @@ function QRCodeSolution() {
               </svg>
             </div>
             <div className="smallBox-container">
-              <div className="color-box-container" onClick={toggleColorPicker1} style={{marginLeft:500}}>
+              <div style={{marginLeft:500}}>
+              <div className="color-box-container" onClick={toggleColorPicker1}>
                 <div
                   className="color-box"
                   style={{
@@ -515,9 +557,10 @@ function QRCodeSolution() {
                 ></div>
                 <span className="label-text">{`rgba(${backgroundColor.r},${backgroundColor.g},${backgroundColor.b},${backgroundColor.a})`}</span>
               </div>
+              </div>
 
               {showColorPicker1 && (
-                <div style={{ position: "relative", bottom: 60, left: 200 }}>
+                <div style={{ position: "absolute" }}>
                   <SketchPicker
                     onChange={(color) => {
                       setBackgroundColor(color.rgb);
@@ -599,7 +642,7 @@ function QRCodeSolution() {
               </div>
 
               {showColorPicker2 && (
-                <div style={{ position: "relative", bottom: 60, left: 200 }}>
+                <div style={{ position: "absolute" }}>
                   <SketchPicker
                     onChange={(color) => {
                       setCornersColor(color.rgb);
@@ -684,7 +727,7 @@ function QRCodeSolution() {
               </div>
 
               {showColorPicker3 && (
-                <div style={{ position: "relative", bottom: 60, left: 200 }}>
+                <div style={{ position: "absolute" }}>
                   <SketchPicker
                     onChange={(color) => {
                       setCornersDotColor(color.rgb);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import About from "../pages/about/About";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "../pages/Home/Home";
@@ -53,7 +53,7 @@ function RouterComponent() {
       </Routes> */}
           <Routes>
         <Route path="/" element={<Home /> } /> 
-        <Route path="/aboutus" element={isLoggedIn ? <About /> : <Navigate to="/login" />} />
+        <Route path="/aboutus" element={<About />} />
         <Route
           path="/qrcodesolutions"
           element={isLoggedIn ? <QRCodeSolution /> : <Navigate to="/login" />}
@@ -64,7 +64,7 @@ function RouterComponent() {
         />
           <Route
           path="/dashboard/:id"
-          element={<Dashboard />}
+          element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />}
         />
         <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/login" />} />
         <Route path="/signup" element={<Signup />} />

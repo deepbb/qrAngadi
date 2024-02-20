@@ -9,17 +9,17 @@ import {
   DeletedocumentQr,
 } from "../../Api/QR";
 
-export const DeleteProfileQr = (id, type, Profile,ChangeLoad) => {
+export const DeleteProfileQr = (id, type, Profile, ChangeLoad) => {
   switch (type) {
     case "Website": {
       DeleteWebsiteQr(id).then((res) => {
         console.log(res);
         if (res.message === "Success") {
-          ChangeLoad()
+          ChangeLoad();
           alert("qr Deleted Success");
           Profile();
         } else {
-          ChangeLoad()
+          ChangeLoad();
           alert(res);
         }
       });
@@ -30,11 +30,11 @@ export const DeleteProfileQr = (id, type, Profile,ChangeLoad) => {
       DeletePlayStoreQr(id).then((res) => {
         console.log(res);
         if (res.message === "Success") {
-          ChangeLoad()
+          ChangeLoad();
           alert("qr Deleted Success");
           Profile();
         } else {
-          ChangeLoad()
+          ChangeLoad();
           alert(res);
         }
       });
@@ -43,11 +43,11 @@ export const DeleteProfileQr = (id, type, Profile,ChangeLoad) => {
     case "Audio": {
       DeleteAudioQr(id).then((res) => {
         if (res.message === "Success") {
-          ChangeLoad()
+          ChangeLoad();
           alert("qr Deleted Success");
           Profile();
         } else {
-          ChangeLoad()
+          ChangeLoad();
           alert(res);
         }
       });
@@ -56,11 +56,11 @@ export const DeleteProfileQr = (id, type, Profile,ChangeLoad) => {
     case "Video": {
       DeleteVideoQr(id).then((res) => {
         if (res.message === "Success") {
-          ChangeLoad()
+          ChangeLoad();
           alert("qr Deleted Success");
           Profile();
         } else {
-          ChangeLoad()
+          ChangeLoad();
           alert(res);
         }
       });
@@ -69,11 +69,11 @@ export const DeleteProfileQr = (id, type, Profile,ChangeLoad) => {
     case "Image": {
       DeleteImageQr(id).then((res) => {
         if (res.message === "Success") {
-          ChangeLoad()
+          ChangeLoad();
           alert("qr Deleted Success");
           Profile();
         } else {
-          ChangeLoad()
+          ChangeLoad();
           alert(res);
         }
       });
@@ -82,24 +82,24 @@ export const DeleteProfileQr = (id, type, Profile,ChangeLoad) => {
     case "Pdf": {
       DeletedocumentQr(id).then((res) => {
         if (res.message === "Success") {
-          ChangeLoad()
+          ChangeLoad();
           alert("qr Deleted Success");
           Profile();
         } else {
-          ChangeLoad()
+          ChangeLoad();
           alert(res);
         }
       });
       break;
     }
-    case "Map": {
+    case "GoogleMap": {
       DeleteMapQr(id).then((res) => {
         if (res.message === "Success") {
-          ChangeLoad()
+          ChangeLoad();
           alert("qr deleted Success");
           Profile();
         } else {
-          ChangeLoad()
+          ChangeLoad();
           alert(res);
         }
       });
@@ -108,11 +108,11 @@ export const DeleteProfileQr = (id, type, Profile,ChangeLoad) => {
     case "Social": {
       DeleteSocialQr(id).then((res) => {
         if (res.message === "Success") {
-          ChangeLoad()
+          ChangeLoad();
           alert("qr Deleted Success");
           Profile();
         } else {
-          ChangeLoad()
+          ChangeLoad();
           alert(res);
         }
       });

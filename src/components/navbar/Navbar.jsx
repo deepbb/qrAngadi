@@ -20,14 +20,10 @@ export default function Navbar() {
           <Link to="/" className="list-items" href="/">
             Home
           </Link>
-          {storedUserData ?
           <Link to="/aboutus" className="list-items">
             About us
-          </Link> : 
-          <Link to="/login" className="list-items">
-          About us
-        </Link>
-           }
+          </Link> 
+         
            {storedUserData ?
           <Link to="/qrcodesolutions" className="list-items">
             QR Code Solutions

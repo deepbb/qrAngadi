@@ -47,8 +47,10 @@ function Profile() {
     setOpen(false);
   };
 
-  const ChangeLoad = () => {
-    setLoad(false);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
   };
 
   const Profile = () => {
@@ -92,7 +94,7 @@ function Profile() {
 
   const DeleteQr = (id, type) => {
     setLoad(true);
-    let res = DeleteProfileQr(id, type, Profile, ChangeLoad);
+    let res = DeleteProfileQr(id, type, Profile,);
   };
 
   const handleDownload = (imageUrl, fileName) => {
@@ -200,7 +202,16 @@ function Profile() {
         </div>
       </div>
       <div className="main-section">
+        <div className="qr-headingtext">
         <h1 style={{ marginLeft: 20 }}>My QR Codes</h1>
+        <div className="profile-tab" onClick={toggleDropdown} >
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <IoPersonCircleSharp size={25} />
+            <span style={{ fontSize: 16,marginLeft:5 }}>Sravan Kumar</span>
+          </div>
+          <MdKeyboardArrowDown size={25} onClick={toggleDropdown} />
+        </div>
+        </div>
         <span style={{ marginLeft: 20 }}>
           Create, view, edit, design, and download QR Codes
         </span>
@@ -260,8 +271,10 @@ function Profile() {
               </tr>
             </thead>
 
+        
+
             {data && data.length > 0
-              ? filteredData.map((item, index) => (
+              ? filteredData?.map((item, index) => (
                   <tbody>
                     <tr className="tableRow">
                       <td className="cellStyle">{item._id}</td>
@@ -320,18 +333,12 @@ function Profile() {
                     </tr>
                   </tbody>
                 ))
-              : null}
+              : null} 
           </table>
         </div>
       </div>
+      { dropdownVisible && 
       <div className="rightbar">
-        <div className="profile-tab">
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <IoPersonCircleSharp size={25} />
-            <span style={{ fontSize: 12 }}>Sravan Kumar</span>
-          </div>
-          <MdKeyboardArrowDown size={25} />
-        </div>
         <div className="rightTab-containetr">
           <div className="rightbar-tabs">
             <img
@@ -351,7 +358,7 @@ function Profile() {
             />
             <span style={{ marginLeft: 10, color: "#3D3D3D", fontSize: 15 }}>
               My Subscription
-            </span>
+            </span>  
           </div>
           <div className="rightbar-tabs">
             <img
@@ -375,6 +382,7 @@ function Profile() {
           </div>
         </div>
       </div>
+      }
     </div>
   );
 }

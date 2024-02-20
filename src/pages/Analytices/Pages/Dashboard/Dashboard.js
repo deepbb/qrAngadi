@@ -1,6 +1,6 @@
 import React, { useState, createRef, useRef, useEffect } from "react";
 import "./Dashboard.css";
-import Logo from "../../.././../assets/awtlogo.png";
+import Logo from "../../.././../assets/qr-angadi.png";
 import Overview from "../../Images/overviewBtn.png";
 import Logout from "../../Images/Logout.png";
 import Profile from "../../.././../assets/awtlogo.png";
@@ -203,7 +203,7 @@ const Dashboard = () => {
   return (
     <div
       className="head"
-      style={{ height: "1030px", backgroundColor: "rgba(29, 29, 65, 1)" }}
+      style={{ height: "1030px", backgroundColor: "#FFFFFF" }}
     >
       <ToastContainer />
       <div className="container-fluid">
@@ -215,7 +215,7 @@ const Dashboard = () => {
                 position: "static",
                 position: "fixed",
                 padding: 13,
-                backgroundColor: "rgba(29, 29, 65, 1)",
+                backgroundColor: "#FFFFFF",
               }}
             >
               <div className="text-center">
@@ -238,8 +238,8 @@ const Dashboard = () => {
                 ></img>
               </div>
               <div className="text-center">
-                <p
-                  className="btn btn-outline-secondary mt-4"
+                <p style={{backgroundColor:'#F48020', color:'white'}}
+                  className="btn mt-4"
                   onClick={() => handleExport()}
                 >
                   Export Analytics
@@ -281,7 +281,7 @@ const Dashboard = () => {
           <div
             style={{
               height: "100vh",
-              backgroundColor: "rgba(20, 19, 50, 1)",
+              backgroundColor: "#FFFFFF",
             }}
             className="col-lg-10 col-md-12 col-sm-12 col-12"
           >
@@ -300,7 +300,7 @@ const Dashboard = () => {
                   }}
                 >
                   <div class="head1">
-                    <h4 style={{ color: "#fff", marginLeft: 0, marginTop: 5 }}>
+                    <h4 style={{ color: "#000", marginLeft: 0, marginTop: 5 }}>
                       Dashboard
                     </h4>
                   </div>
@@ -351,7 +351,7 @@ const Dashboard = () => {
                       <div className="mt-1">
                         <p
                           style={{
-                            color: "#fff",
+                            color: "#000",
                             fontWeight: 500,
                             fontSize: 10,
                             marginLeft: 5,
@@ -361,7 +361,7 @@ const Dashboard = () => {
                         </p>
                         <p
                           style={{
-                            color: "#fff",
+                            color: "#000",
                             fontWeight: 500,
                             fontSize: 10,
                             marginLeft: 5,
@@ -402,17 +402,17 @@ const Dashboard = () => {
                     style={{
                       fontSize: 25,
                       fontWeight: "600",
-                      color: "rgba(255, 255, 255, 1)",
+                      color: "#000",
                     }}
                   >
                     Overview
                   </p>
                   <p
                     style={{
-                      color: "rgba(255, 255, 255, 1)",
+                      color: "#000",
                       marginTop: -18,
                       fontSize: 14,
-                      fontWeight: "400",
+                      fontWeight: "600",
                     }}
                   >
                     Track QR Code scanning activity based on date, geography,
@@ -513,14 +513,14 @@ const Dashboard = () => {
                   style={{
                     display: "flex",
                     justifyContent: "center",
-                    backgroundColor: "rgba(29, 29, 65, 1)",
+                    backgroundColor: "#F48020",
                     width: 230,
                     borderRadius: 5,
                   }}
                 >
                   <p
                     style={{
-                      color: "rgba(93, 95, 239, 1)",
+                      color: "#FFFFFF",
                       fontWeight: "600",
                       fontSize: 18,
                       textAlign: "center",
@@ -551,7 +551,7 @@ const Dashboard = () => {
                 <div
                   className="row mt-3"
                   style={{
-                    backgroundColor: "rgba(20, 19, 50, 1)",
+                    backgroundColor: "#FFFFFF",
                   }}
                   // ref={ref}
                 >
@@ -566,7 +566,7 @@ const Dashboard = () => {
                       style={{
                         width: "100%",
                         height: "100%",
-                        backgroundColor: "rgba(29, 29, 65, 1)",
+                        backgroundColor: "#FFFFFF",
                         borderRadius: 5,
                         padding: 10,
                       }}
@@ -583,7 +583,7 @@ const Dashboard = () => {
                           <p
                             style={{
                               fontSize: 16,
-                              color: "#fff",
+                              color: "#000",
                               fontWeight: "500",
                               marginTop: 5,
                             }}
@@ -601,9 +601,9 @@ const Dashboard = () => {
                             style={{
                               display: "flex",
                               justifyContent: "space-evenly",
-                              border: "1px solid rgba(174, 171, 216, 1)",
+                              border: "1px solid black",
                               height: 30,
-                              color: "rgba(174, 171, 216, 1)",
+                              color: "#000",
                               padding: 4,
                               fontSize: 10,
                               width: 120,
@@ -619,7 +619,7 @@ const Dashboard = () => {
                                         marginTop: 2,
                                         marginLeft: 4,
                                         color:
-                                          Dayselect === index ? "#fff" : null,
+                                          Dayselect === index ? "#000" : null,
                                         fontWeight:
                                           Dayselect === index ? "bold" : null,
                                         cursor: "pointer",
@@ -682,7 +682,7 @@ const Dashboard = () => {
                                           width: 20,
                                           backgroundColor:
                                             select === index
-                                              ? "rgba(99, 89, 233, 1)"
+                                              ? "#F48020"
                                               : null,
                                         }}
                                       ></img>
@@ -698,7 +698,7 @@ const Dashboard = () => {
                                           width: 20,
                                           backgroundColor:
                                             select === index
-                                              ? "rgba(99, 89, 233, 1)"
+                                              ? "#F48020"
                                               : null,
                                         }}
                                       ></img>
@@ -715,6 +715,7 @@ const Dashboard = () => {
                         <div
                           style={{
                             maxHeight: "100%",
+                          
                           }}
                         >
                           {select === 0 ? (
@@ -929,7 +930,7 @@ const Dashboard = () => {
                       style={{
                         width: "100%",
                         height: "100%",
-                        backgroundColor: "rgba(29, 29, 65, 1)",
+                        backgroundColor: "#FFFFFF",
                         padding: 10,
                         borderRadius: 5,
                       }}
@@ -946,7 +947,7 @@ const Dashboard = () => {
                           <p
                             style={{
                               fontSize: 16,
-                              color: "#fff",
+                              color: "#000",
                               fontWeight: "500",
                               marginTop: 5,
                             }}
@@ -995,7 +996,7 @@ const Dashboard = () => {
                                           width: 20,
                                           backgroundColor:
                                             select1 === index
-                                              ? "rgba(99, 89, 233, 1)"
+                                              ? "#F48020"
                                               : null,
                                         }}
                                       ></img>
@@ -1088,7 +1089,7 @@ select1 === 0 ? (
                     <div
                       style={{
                         width: "100%",
-                        backgroundColor: "rgba(29, 29, 65, 1)",
+                        backgroundColor: "#F48020",
                         height: "100%",
                         borderRadius: 5,
                       }}
@@ -1155,7 +1156,7 @@ select1 === 0 ? (
                           {/* //-------------------------------Change graph End---------------------------------// */}
                         </div>
                       </div>
-                      <div
+                      <div  style={{ backgroundColor:'#F48020'}}
                       // style={{
                       //   height: "100%",
                       //   padding: 5,
@@ -1179,7 +1180,7 @@ select1 === 0 ? (
                         width: "100%",
                         height: "100%",
                         padding: 10,
-                        backgroundColor: "rgba(29, 29, 65, 1)",
+                        backgroundColor: "#FFFFFF",
                         borderRadius: 5,
                       }}
                     >
@@ -1195,7 +1196,7 @@ select1 === 0 ? (
                           <p
                             style={{
                               fontSize: 16,
-                              color: "#fff",
+                              color: "#000",
                               fontWeight: "500",
                               marginTop: 5,
                             }}
@@ -1244,7 +1245,7 @@ select1 === 0 ? (
                                           width: 20,
                                           backgroundColor:
                                             select2 === index
-                                              ? "rgba(99, 89, 233, 1)"
+                                              ? "#F48020"
                                               : null,
                                         }}
                                       ></img>
@@ -1332,7 +1333,7 @@ select1 === 0 ? (
                     <div
                       style={{
                         width: "100%",
-                        backgroundColor: "rgba(29, 29, 65, 1)",
+                        backgroundColor: "#FFFFFF",
                         height: "100%",
                         borderRadius: 5,
                         padding: 10,
@@ -1350,7 +1351,7 @@ select1 === 0 ? (
                           <p
                             style={{
                               fontSize: 16,
-                              color: "#fff",
+                              color: "#000",
                               fontWeight: "500",
                               marginTop: 5,
                             }}
@@ -1399,7 +1400,7 @@ select1 === 0 ? (
                                           width: 20,
                                           backgroundColor:
                                             select3 === index
-                                              ? "rgba(99, 89, 233, 1)"
+                                              ? "#F48020"
                                               : null,
                                         }}
                                       ></img>
@@ -1483,7 +1484,7 @@ select1 === 0 ? (
                     <div
                       style={{
                         width: "100%",
-                        backgroundColor: "rgba(29, 29, 65, 1)",
+                        backgroundColor: "#F48020",
                         height: "100%",
                         borderRadius: 5,
                       }}
@@ -1498,7 +1499,7 @@ select1 === 0 ? (
                           <p
                             style={{
                               fontSize: 14,
-                              color: "#fff",
+                              color: "#FFF",
                               fontWeight: "500",
                               marginTop: 8,
                             }}
@@ -1567,7 +1568,7 @@ select1 === 0 ? (
                           <p
                             className="mt-1"
                             style={{
-                              color: "rgba(150, 165, 184, 1)",
+                              color: "#FFF",
                               marginLeft: 10,
                               fontSize: 12,
                               fontWeight: "bold",

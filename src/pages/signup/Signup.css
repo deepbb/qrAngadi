@@ -2,7 +2,7 @@
     background-image: url("./Mask Group 11@2x.png");
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 600px;
+    min-height: 650px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -21,7 +21,7 @@
 }
 
 .form_background {
-    height: 600px;
+    height: 650px;
     width: 90%;
 }
 
@@ -103,5 +103,17 @@ border-style: none;
 .leftline {
 height: 1px;
 background-color: red;
+}
+.signup__heading{
+    display: flex;
+    flex-direction: column;
+    margin-right:12%;
+}
+.signup_form_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+    width: 350px;
 }
 

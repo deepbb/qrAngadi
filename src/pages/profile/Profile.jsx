@@ -29,6 +29,14 @@ function Profile() {
   const [data, setData] = useState([]);
   const [id, setId] = useState("");
   const navigate = useNavigate();
+  const [load,setLoad] = useState(true)
+  const [filterText,setFilterText] = useState('')
+
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
 
   const Profile = () => {
     setLoad(true);
@@ -71,7 +79,7 @@ function Profile() {
 
   const DeleteQr = (id, type) => {
     setLoad(true);
-    let res = DeleteProfileQr(id, type, Profile, ChangeLoad);
+    let res = DeleteProfileQr(id, type, Profile,);
   };
 
   const handleDownload = (imageUrl, fileName) => {
@@ -242,7 +250,7 @@ function Profile() {
         
 
             {data && data.length > 0
-              ? data.map((item, index) => (
+              ? filteredData?.map((item, index) => (
                   <tbody>
                     <tr className="tableRow">
                       <td className="cellStyle">{item._id}</td>

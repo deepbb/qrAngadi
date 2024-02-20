@@ -1,0 +1,138 @@
+/* pricing button type */
+.btn {
+  color: #b8b8b8;
+  font-weight: 700px;
+  font-size: 18px;
+  border: 0;
+  text-transform: uppercase;
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding-block: 10px;
+}
+.pricingButtonContainer {
+  border: 2px solid #ff7143;
+  max-width: fit-content;
+  margin-inline: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+}
+
+.activeType {
+  color: white;
+  background-color: #ff7143;
+}
+
+/* pricing card */
+.pricingCardContainer {
+  width: 80%;
+}
+.card {
+  /* width: 80%; */
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #aaaaaa;
+  box-shadow: 0px 0px 20px 0px #00000040;
+  border-radius: 10px;
+  font-family: Poppins;
+}
+.cardInfo {
+  padding: 20px;
+}
+
+.infoHeader {
+}
+.cardHead {
+  color: #ff7143;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.infoHeader > .cardType {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 54px;
+  letter-spacing: 0.03em;
+  text-align: left;
+}
+.hr {
+  color: transparent;
+  height: 1px;
+  background-color: #aaaaaa;
+}
+
+/* FOOTER */
+.cardFooter {
+  background-color: #ffa88c4a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 20px;
+  flex-direction: column;
+}
+
+.boldText {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 23px;
+  letter-spacing: 0.03em;
+}
+.smallText {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 23px;
+  letter-spacing: 0.03em;
+}
+
+/* card two styling */
+.cardTwo {
+  box-sizing: border-box;
+  outline: 5px solid #ff7143;
+  border-bottom: 5px solid #ff7143;
+  border: 0;
+}
+.mostPopular {
+  background-color: #ff7143;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mostPopular > p {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 27px;
+  letter-spacing: 0.03em;
+}
+
+.signup {
+  width: 100%;
+  border: 2px solid #ff7143;
+  background: transparent;
+  border-radius: 10px;
+  color: #ff7143;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: -0.01em;
+}
+.signup:hover {
+  background-color: #ff7143;
+  color: white;
+}
+
+.subscribe {
+  width: 100%;
+  border: 2px solid #ff7143;
+  background: #ff7143;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: -0.01em;
+}

@@ -1,0 +1,46 @@
+.faqcontainer {
+  display: flex;
+}
+
+.head {
+  flex: 1;
+}
+.accordionContainer {
+  flex: 1;
+}
+
+.removeBorder {
+  box-shadow: none !important;
+  outline: none;
+  border: none !important;
+  border-bottom: 1.19px solid #b2b2b2 !important;
+  border-radius: 0;
+}
+
+.headText {
+  font-family: Poppins;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 55px;
+  letter-spacing: 0em;
+}
+
+.sideText {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 31px;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+.contactUsBtn {
+  background-color: #ff7143;
+  color: white;
+  border: 0;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 29px;
+  letter-spacing: 0em;
+  padding-inline: 40px;
+  padding-block: 6px;
+}

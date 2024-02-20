@@ -1,0 +1,16 @@
+.centerText {
+  text-align: center;
+}
+.head {
+  font-weight: 700;
+  font-family: Poppins;
+  font-size: 48px;
+  margin-bottom: 0;
+}
+
+.headText {
+  font-weight: 500;
+  font-size: 32px;
+  font-family: Poppins;
+  margin-top: 0;
+}

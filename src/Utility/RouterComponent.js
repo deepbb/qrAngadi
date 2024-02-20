@@ -7,7 +7,7 @@ import Profile from "../pages/profile/Profile";
 import Signup from "../pages/signup/Signup";
 import Login from "../pages/login/Login";
 import Dashboard from "../pages/Analytices/Pages/Dashboard/Dashboard";
-
+import Pricing from "../pages/pricing/pricing";
 function RouterComponent() {
   // In App.js or any other file where you want to access the stored data
 
@@ -39,6 +39,7 @@ function RouterComponent() {
         <Route path="/dashboard/:id" element={<Dashboard></Dashboard>} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/pricing" element={<Pricing />} />
       </Routes>
     </div>
   );

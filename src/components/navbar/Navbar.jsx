@@ -23,9 +23,9 @@ export default function Navbar() {
           <li className="list-items" href="/">
             Gamifying Solutions
           </li>
-          <li className="list-items" href="/">
+          <Link to="/pricing" className="list-items">
             Pricing
-          </li>
+          </Link>
           <Link to="/profile" className="list-items">
             Profile
           </Link>
@@ -34,11 +34,11 @@ export default function Navbar() {
           </li>
         </div>
         <div className="navbar-login">
-          <Link to="/login" style={{textDecoration:'none'}}>
-          <button className="btn-login">Login</button>
+          <Link to="/login" style={{ textDecoration: "none" }}>
+            <button className="btn-login">Login</button>
           </Link>
-          <Link to="/signup" style={{textDecoration:'none'}}>
-          <button className="btn-signup">Sign up</button>
+          <Link to="/signup" style={{ textDecoration: "none" }}>
+            <button className="btn-signup">Sign up</button>
           </Link>
         </div>
       </div>

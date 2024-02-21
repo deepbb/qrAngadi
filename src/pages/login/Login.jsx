@@ -3,7 +3,7 @@ import "./Login.css";
 import SignupForm from "../signup/Group 6741@2x.png";
 import Logo from "../signup/Group 6742.png";
 import { useNavigate } from "react-router-dom";
-import { BaseUrl } from "../../Api/BaseUrl";
+// import { BaseUrl } from "../../Api/BaseUrl";
 
 function Login() {
   const [isChecked, setChecked] = useState(false);
@@ -29,7 +29,7 @@ function Login() {
     console.log("Form submitted:", formData);
     try {
       const response = await fetch(
-        `${BaseUrl}/Users/Signin`,
+        `http://103.120.176.158:9100/api/v1/Users/Signin`,
         {
           method: "POST",
           headers: {

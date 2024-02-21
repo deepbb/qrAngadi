@@ -53,6 +53,9 @@ function QRCodeSolution() {
     useState(-1);
   const [qrTypeSelection, setQrTypeSelection] = useState(-1);
 
+  const [lat, setLat] = useState("");
+  const [lon, setLon] = useState("");
+
   const [qrType, setQrType] = useState("");
   const [Url, setUrl] = useState("");
 
@@ -73,9 +76,9 @@ function QRCodeSolution() {
 
   const [load, setLoad] = useState(false);
 
-  const ChangeLoad=()=>{
+  const ChangeLoad = () => {
     setLoad(false);
-  }
+  };
 
   const [dotColor, setDotColor] = useState({
     r: "241",
@@ -154,6 +157,7 @@ function QRCodeSolution() {
   useEffect(() => {
     setOptions((options) => ({
       ...options,
+      data: `${lat} ${lon}`,
       image: logo,
       backgroundOptions: {
         ...options.backgroundOptions,
@@ -184,6 +188,8 @@ function QRCodeSolution() {
     logo,
     cornerdottype,
     cornertype,
+    lat,
+    lon,
   ]);
 
   const onDataChange = (event) => {
@@ -222,11 +228,11 @@ function QRCodeSolution() {
     if (!qrType) {
       alert("Qr Type Is Required");
       return false;
-    } else if (!Url) {
+    } else if (qrType != "Map" ? !Url : !lat || !lon) {
       alert("Qr Data is Required");
       return false;
     }
-    setLoad(true)
+    setLoad(true);
     if (images) {
       const data = new FormData();
       data.append("file", images);
@@ -251,7 +257,9 @@ function QRCodeSolution() {
           file.secure_url,
           Url,
           navigate,
-          ChangeLoad
+          ChangeLoad,
+          lat,
+          lon
         );
       }
     } else {
@@ -266,7 +274,9 @@ function QRCodeSolution() {
         Url,
         Url,
         navigate,
-        ChangeLoad
+        ChangeLoad,
+        lat,
+        lon
       );
     }
   };
@@ -289,57 +299,88 @@ function QRCodeSolution() {
         <div className="icon-container">
           {QrType && QrType.length > 0
             ? QrType.map((item, index) => (
-                <div
-                  key={index} // Add a unique key prop for each mapped item
+              <div
+                key={index} // Add a unique key prop for each mapped item
+                style={{
+                  width: "13%",
+                  height: "60px",
+                  margin: "10px 5px",
+                  display: "flex",
+                  justifyContent: "flex-start",
+                  alignItems: "center",
+                  borderRadius: "10px",
+                  cursor: "pointer",
+                  boxShadow:
+                    "inset 0 0 10px rgba(0, 0, 0, 0.29), 0 3px 20px rgba(0, 0, 0, 0.1)",
+                  border: "3px solid #ffffff",
+                  backgroundColor:
+                    index === qrTypeSelection ? "#f48020" : "#fff",
+                }}
+                onClick={() => (
+                  setQrTypeSelection(index), setQrType(item.type)
+                )}
+              >
+                <img
+                  src={item.Image}
+                  alt=""
                   style={{
-                    width: "13%",
-                    height: "60px",
-                    margin: "10px 5px",
-                    display: "flex",
-                    justifyContent: "flex-start",
-                    alignItems: "center",
-                    borderRadius: "10px",
-                    cursor: "pointer",
-                    boxShadow:
-                      "inset 0 0 10px rgba(0, 0, 0, 0.29), 0 3px 20px rgba(0, 0, 0, 0.1)",
-                    border: "3px solid #ffffff",
-                    backgroundColor:
-                      index === qrTypeSelection ? "#f48020" : "#fff",
+                    height: "22px",
+                    width: "22px",
+                    objectFit: "contain",
+                    marginLeft: "10px",
+                    marginRight: "10px",
                   }}
-                  onClick={() => (
-                    setQrTypeSelection(index), setQrType(item.type)
-                  )}
-                >
-                  <img
-                    src={item.Image}
-                    alt=""
-                    style={{
-                      height: "22px",
-                      width: "22px",
-                      objectFit: "contain",
-                      marginLeft: "10px",
-                      marginRight: "10px",
-                    }}
-                  />
-                  <p>{item.name}</p>
-                </div>
-              ))
+                />
+                <p>{item.name}</p>
+              </div>
+            ))
             : null}
         </div>
       </div>
       <div className="mainContainer2">
         <div className="customize">
           <button className="customize-button">Customize</button>
-          <input
-            style={{
-              width: 500,
-              height: 40,
-              borderWidth: 2,
-              borderRadius: 5,
-            }}
-            value={options.data}
-            onChange={onDataChange}
-          />
+          {qrType === "Map" ? (
+            <>
+              <input
+                style={{
+                  width: 300,
+                  height: 40,
+                  borderWidth: 2,
+                  borderRadius: 5,
+                  paddingLeft: 8,
+                }}
+                placeholder="Enter latitude"
+                value={lat}
+                onChange={(e) => setLat(e.target.value)}
+              />
+              <input
+                style={{
+                  width: 300,
+                  height: 40,
+                  borderWidth: 2,
+                  borderRadius: 5,
+                  paddingLeft: 8,
+                }}
+                placeholder="Enter Longitude"
+                value={lon}
+                onChange={(e) => setLon(e.target.value)}
+              />
+            </>
+          ) : (
+            <input
+              style={{
+                width: 500,
+                height: 40,
+                borderWidth: 2,
+                borderRadius: 5,
+              }}
+              placeholder="Enter Url"
+              value={options.data}
+              onChange={onDataChange}
+            />
+          )}
+
           <div className="radio-container">
             <label>
               <input
@@ -424,8 +465,9 @@ function QRCodeSolution() {
               </svg>
             </div>
             <div className="smallBox-container">
-              {Dot && Dot.length > 0
-                ? Dot.map((item, index) => (
+              <div style={{display:'flex'}}>
+                {Dot && Dot.length > 0
+                  ? Dot.map((item, index) => (
                     <div
                       style={{
                         height: 30,
@@ -451,20 +493,22 @@ function QRCodeSolution() {
                       ></img>
                     </div>
                   ))
-                : null}
-
-              <div className="color-box-container" onClick={toggleColorPicker}>
-                <div
-                  className="color-box"
-                  style={{
-                    backgroundColor: `rgba(${dotColor.r},${dotColor.g},${dotColor.b},${dotColor.a})`,
-                  }}
-                ></div>
-                <span className="label-text">{`rgba(${dotColor.r},${dotColor.g},${dotColor.b},${dotColor.a})`}</span>
+                  : null}
+              </div>
+              <div>
+                <div className="color-box-container" onClick={toggleColorPicker}>
+                  <div
+                    className="color-box"
+                    style={{
+                      backgroundColor: `rgba(${dotColor.r},${dotColor.g},${dotColor.b},${dotColor.a})`,
+                    }}
+                  ></div>
+                  <span className="label-text">{`rgba(${dotColor.r},${dotColor.g},${dotColor.b},${dotColor.a})`}</span>
+                </div>
               </div>
 
               {showColorPicker && (
-                <div style={{ position: "relative", bottom: 60, left: 200 }}>
+                <div style={{ position: "absolute" }}>
                   <SketchPicker
                     onChange={(color) => {
                       setDotColor(color.rgb);
@@ -503,6 +547,7 @@ function QRCodeSolution() {
               </svg>
             </div>
             <div className="smallBox-container">
+              <div style={{marginLeft:500}}>
               <div className="color-box-container" onClick={toggleColorPicker1}>
                 <div
                   className="color-box"
@@ -512,9 +557,10 @@ function QRCodeSolution() {
                 ></div>
                 <span className="label-text">{`rgba(${backgroundColor.r},${backgroundColor.g},${backgroundColor.b},${backgroundColor.a})`}</span>
               </div>
+              </div>
 
               {showColorPicker1 && (
-                <div style={{ position: "relative", bottom: 60, left: 200 }}>
+                <div style={{ position: "absolute" }}>
                   <SketchPicker
                     onChange={(color) => {
                       setBackgroundColor(color.rgb);
@@ -553,35 +599,37 @@ function QRCodeSolution() {
               </svg>
             </div>
             <div className="smallBox-container">
+              <div style={{display:'flex'}}>
               {Square && Square.length > 0
                 ? Square.map((item, index) => (
-                    <div
+                  <div
+                    style={{
+                      height: 30,
+                      width: 40,
+                      borderWidth: index == cornerSelectedOption ? 5 : 1,
+                      borderColor:
+                        index == cornerSelectedOption ? "#f48020" : "grey",
+                      borderStyle: "solid",
+
+                      margin: 5,
+                    }}
+                    onClick={() => (
+                      setCornorType(item.name), setCorderSelectedOption(index)
+                    )}
+                  >
+                    <img
                       style={{
-                        height: 30,
-                        width: 40,
-                        borderWidth: index == cornerSelectedOption ? 5 : 1,
-                        borderColor:
-                          index == cornerSelectedOption ? "#f48020" : "grey",
-                        borderStyle: "solid",
-
-                        margin: 5,
+                        height: "100%",
+                        width: "100%",
+                        cursor: "pointer",
                       }}
-                      onClick={() => (
-                        setCornorType(item.name), setCorderSelectedOption(index)
-                      )}
-                    >
-                      <img
-                        style={{
-                          height: "100%",
-                          width: "100%",
-                          cursor: "pointer",
-                        }}
-                        src={item.Image}
-                      ></img>
-                    </div>
-                  ))
+                      src={item.Image}
+                    ></img>
+                  </div>
+                ))
                 : null}
-
+                </div>
+<div>
               <div className="color-box-container" onClick={toggleColorPicker2}>
                 <div
                   className="color-box"
@@ -591,9 +639,10 @@ function QRCodeSolution() {
                 ></div>
                 <span className="label-text">{`rgba(${cornersColor.r},${cornersColor.g},${cornersColor.b},${cornersColor.a})`}</span>
               </div>
+              </div>
 
               {showColorPicker2 && (
-                <div style={{ position: "relative", bottom: 60, left: 200 }}>
+                <div style={{ position: "absolute" }}>
                   <SketchPicker
                     onChange={(color) => {
                       setCornersColor(color.rgb);
@@ -631,39 +680,41 @@ function QRCodeSolution() {
               </svg>
             </div>
             <div className="smallBox-container">
+              <div style={{display:'flex'}}>
               {Cornor && Cornor.length > 0
                 ? Cornor.map((item, index) => (
-                    <div
+                  <div
+                    style={{
+                      height: 30,
+                      width: 40,
+                      borderWidth:
+                        index == cornerSquareSelectedOption ? 5 : 1,
+                      borderColor:
+                        index == cornerSquareSelectedOption
+                          ? "#f48020"
+                          : "grey",
+                      borderStyle: "solid",
+
+                      margin: 5,
+                    }}
+                    onClick={() => (
+                      setCornerdotType(item.name),
+                      setCorderSquareSelectedOption(index)
+                    )}
+                  >
+                    <img
                       style={{
-                        height: 30,
-                        width: 40,
-                        borderWidth:
-                          index == cornerSquareSelectedOption ? 5 : 1,
-                        borderColor:
-                          index == cornerSquareSelectedOption
-                            ? "#f48020"
-                            : "grey",
-                        borderStyle: "solid",
-
-                        margin: 5,
+                        height: "100%",
+                        width: "100%",
+                        cursor: "pointer",
                       }}
-                      onClick={() => (
-                        setCornerdotType(item.name),
-                        setCorderSquareSelectedOption(index)
-                      )}
-                    >
-                      <img
-                        style={{
-                          height: "100%",
-                          width: "100%",
-                          cursor: "pointer",
-                        }}
-                        src={item.Image}
-                      ></img>
-                    </div>
-                  ))
+                      src={item.Image}
+                    ></img>
+                  </div>
+                ))
                 : null}
-
+                </div>
+<div>
               <div className="color-box-container" onClick={toggleColorPicker3}>
                 <div
                   className="color-box"
@@ -673,9 +724,10 @@ function QRCodeSolution() {
                 ></div>
                 <span className="label-text">{`rgba(${cornersDotColor.r},${cornersDotColor.g},${cornersDotColor.b},${cornersDotColor.a})`}</span>
               </div>
+              </div>
 
               {showColorPicker3 && (
-                <div style={{ position: "relative", bottom: 60, left: 200 }}>
+                <div style={{ position: "absolute" }}>
                   <SketchPicker
                     onChange={(color) => {
                       setCornersDotColor(color.rgb);

@@ -14,15 +14,15 @@ function Footer() {
       <div className="footer">
         <div className="inner-container">
           <div className="about-section">
-            <p className="footer-heading">About Us</p>
+            <p className="footer-heading">News Letter</p>
             <p className="footer-paragraph">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua. At vero eos et accusam et justo duo
-              dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-              sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-              amet, consetetur{" "}
+              Stay up to date on the latest features and releases by joining our
+              news letter{" "}
             </p>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <input className="new_letter" />
+              <button className="sub_btn">Subscribe</button>
+            </div>
             <div className="social-links-container">
               <img src={Whatsapp} className="social-logo" alt="" />
               <img src={Insta} className="social-logo" alt="" />
@@ -68,7 +68,15 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="disclaimer"></div>
+      <div className="disclaimer">
+        <div>
+          <p className="disclaimer_text">© 2024 Mockup. All Rights Reserved.</p>
+        </div>
+        <div className="privacy_policy">
+          <p className="privacy_text">Privacy Policy</p>
+          <p className="privacy_text">Terms of Service</p>
+        </div>
+      </div>
     </>
   );
 }

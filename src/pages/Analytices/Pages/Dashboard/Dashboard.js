@@ -177,7 +177,7 @@ const Dashboard = () => {
       QrId: id,
     })
       .then((res) => {
-        console.log(res);
+        toast(res.message)
         setData(res.month);
         setTotalscan(res.TotalScans);
         setWeek(res.week);

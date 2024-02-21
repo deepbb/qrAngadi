@@ -58,7 +58,7 @@ function PricingCards() {
                           style={{
                             display: "flex",
                             justifyContent: "space-between",
-                            gap: "5px",
+                            gap: "20px",
                           }}
                         >
                           <span>{feature}</span>
@@ -108,7 +108,7 @@ function PricingCards() {
                           style={{
                             display: "flex",
                             justifyContent: "space-between",
-                            gap: "5px",
+                            gap: "20px",
                           }}
                         >
                           <span>{feature}</span>
@@ -161,7 +161,7 @@ function PricingCards() {
                           style={{
                             display: "flex",
                             justifyContent: "space-between",
-                            gap: "5px",
+                            gap: "20px",
                           }}
                         >
                           <span>{feature}</span>

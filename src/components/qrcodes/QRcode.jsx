@@ -15,7 +15,7 @@ import GaneSol from  "../../assets/gamesol.png"
 import Support from  "../../assets/support.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -27,6 +27,17 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 
 function QRcode() {
+  const navigate = useNavigate()
+  const storedUserData = localStorage.getItem("userData");
+  console.log("STORE DATA in HOME", storedUserData);
+
+  const handlenavigateQr = ()=> {
+    if(storedUserData) {
+      navigate("/qrcodesolutions")
+    } else {
+      alert("Please Login to Create a QR Code")
+    }
+  }
   
   return (
     <>
@@ -34,7 +45,7 @@ function QRcode() {
         <h1 className='qr-code-heading'>Choose from Wide Range of <span className='text'>QR code as per your need</span></h1>
         <div className='img-container'>
             <img src={QRSocial} alt='' width="900" height="500"/>
-            <button className='create-btn'>Create Now</button>
+            <button onClick={handlenavigateQr} className='create-btn'>Create Now</button>
         </div>
         </div>
         <div className='mobile-qr'>
@@ -118,7 +129,7 @@ function QRcode() {
                       </span>
               </div>
         </div>
-        <div className='support'>
+        {/* <div className='support'>
         <img src={Support} alt='baseimage' className='supportimage' />
         <div className='supportBox'>
           <h1 className='supportheading'>Supported by</h1>
@@ -138,13 +149,13 @@ function QRcode() {
           </div>
 
         </div>
-        </div>
+        </div> */}
         <div className='base6'>
         <img src={Base4} alt='baseimage' className='supportimage' />
         <div className='image-slider'>
         <div className='scroll-container'>
           <div className='imgBox'>
-            <div className='profile-container'>
+            <div className='profile-containerQR'>
               <div className='profile'></div>
               <div className='profileinfo'>
                   <p className='name'>Alex M</p>
@@ -165,10 +176,10 @@ function QRcode() {
               </p>
           </div>
           <div className='imgBox'>
-            <div className='profile-container'>
+            <div className='profile-containerQR'>
               <div className='profile'></div>
               <div className='profileinfo'>
-                  <p className='name'>Alex M</p>
+                  <p className='name'>Sarah T</p>
                   <p className='designation'>Compliance Officer,</p>
                   <p className='designation'>SecureTech Solutions</p>
               </div>
@@ -182,14 +193,14 @@ function QRcode() {
               </div>
               <hr className='horizontal' />
               <p className='box-text'>
-              “QR Angadi has been a game-changer for our compliance management. It's intuitive, efficient, and crucial for regulatory adherence.”
+              “The marketing assets hub is a lifesaver! QR Angadi has simplified our workflow, making it easy to manage and track our marketing campaigns.”
               </p>
           </div>
           <div className='imgBox'>
-            <div className='profile-container'>
+            <div className='profile-containerQR'>
               <div className='profile'></div>
               <div className='profileinfo'>
-                  <p className='name'>Alex M</p>
+                  <p className='name'>Aliva P</p>
                   <p className='designation'>Compliance Officer,</p>
                   <p className='designation'>SecureTech Solutions</p>
               </div>
@@ -203,7 +214,7 @@ function QRcode() {
               </div>
               <hr className='horizontal' />
               <p className='box-text'>
-              “QR Angadi has been a game-changer for our compliance management. It's intuitive, efficient, and crucial for regulatory adherence.”
+              I found the product as per expectations and even more that’s the reason for my rating...India needed this badly...I wish Vitamins &amp; Me the best to create more such customized supplement products.
               </p>
           </div>
           </div>

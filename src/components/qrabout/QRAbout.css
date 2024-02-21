@@ -1,12 +1,13 @@
 .about-heading{
     font-family: Poppins;
-    font-size: 30px;
+    font-size: 25px;
     line-height: 2;
     font-weight: 600;
+    color: #000000;
   }
   .about-heading2 {
     font-family: Poppins;
-    font-size: 30px;
+    font-size: 25px;
     line-height:2;
   }
   .about-image {

@@ -8,6 +8,8 @@ import {
   CreateVideoQr,
   CreateWebsiteQr,
 } from "../Api/QR";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const CreateQr = (
   type,
@@ -20,10 +22,13 @@ export const CreateQr = (
   logo,
   Url,
   navigate,
-  ChangeLoad
+  ChangeLoad,
+  lat,
+  lon
 ) => {
   switch (type) {
     case "Website": {
+      console.log("alok");
       CreateWebsiteQr({
         Url: Url,
         dotoption: {
@@ -45,12 +50,12 @@ export const CreateQr = (
       }).then((res) => {
         console.log(res);
         if (res.status === "success") {
-          ChangeLoad()
+          ChangeLoad();
           alert("qr Created Success");
           navigate("/profile");
         } else {
-          ChangeLoad()
-          alert(res);
+          ChangeLoad();
+          alert(res.message);
         }
       });
       break;
@@ -78,12 +83,12 @@ export const CreateQr = (
       }).then((res) => {
         console.log(res);
         if (res.status === "success") {
-          ChangeLoad()
+          ChangeLoad();
           navigate("/profile");
           alert("qr Created Success");
         } else {
-          ChangeLoad()
-          alert(res);
+          ChangeLoad();
+          alert(res.message);
         }
       });
       break;
@@ -109,12 +114,12 @@ export const CreateQr = (
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
-          ChangeLoad()
+          ChangeLoad();
           navigate("/profile");
           alert("qr Created Success");
         } else {
-          ChangeLoad()
-          alert(res);
+          ChangeLoad();
+          alert(res.message);
         }
       });
       break;
@@ -140,12 +145,12 @@ export const CreateQr = (
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
-          ChangeLoad()
+          ChangeLoad();
           navigate("/profile");
           alert("qr Created Success");
         } else {
-          ChangeLoad()
-          alert(res);
+          ChangeLoad();
+          alert(res.message);
         }
       });
       break;
@@ -171,12 +176,12 @@ export const CreateQr = (
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
-          ChangeLoad()
+          ChangeLoad();
           navigate("/profile");
           alert("qr Created Success");
         } else {
-          ChangeLoad()
-          alert(res);
+          ChangeLoad();
+          alert(res.message);
         }
       });
       break;
@@ -202,12 +207,12 @@ export const CreateQr = (
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
-          ChangeLoad()
+          ChangeLoad();
           navigate("/profile");
           alert("qr Created Success");
         } else {
-          ChangeLoad()
-          alert(res);
+          ChangeLoad();
+          alert(res.message);
         }
       });
       break;
@@ -215,6 +220,8 @@ export const CreateQr = (
     case "Map": {
       CreateMapQr({
         Url: Url,
+        lat: lat,
+        lon: lon,
         dotoption: {
           color: `rgba(${dotColor.r},${dotColor.g},${dotColor.b},${dotColor.a})`,
           type: dottype,
@@ -233,12 +240,12 @@ export const CreateQr = (
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
-          ChangeLoad()
+          ChangeLoad();
           navigate("/profile");
           alert("qr Created Success");
         } else {
-          ChangeLoad()
-          alert(res);
+          ChangeLoad();
+          alert(res.message);
         }
       });
       break;
@@ -264,12 +271,12 @@ export const CreateQr = (
         image: logo,
       }).then((res) => {
         if (res.status === "success") {
-          ChangeLoad()
+          ChangeLoad();
           navigate("/profile");
           alert("qr Created Success");
         } else {
-          ChangeLoad()
-          alert(res);
+          ChangeLoad();
+          alert(res.message);
         }
       });
       break;

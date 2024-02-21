@@ -4,6 +4,11 @@ import Logo from "../../assets/qr-angadi.png";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
+  const storedUserData = localStorage.getItem("userData");
+  console.log("STORE DATA in HOME", storedUserData);
+
+  console.log("NAVBAR", storedUserData);
+
   return (
     <div className="navbar">
       <div className="navbar-wraper">
@@ -17,18 +22,31 @@ export default function Navbar() {
           <Link to="/aboutus" className="list-items">
             About us
           </Link>
-          <Link to="/qrcodesolutions" className="list-items">
-            QR Code Solutions
-          </Link>
+
+          {storedUserData ? (
+            <Link to="/qrcodesolutions" className="list-items">
+              QR Code Solutions
+            </Link>
+          ) : (
+            <Link to="/login" className="list-items">
+              QR Code Solutions
+            </Link>
+          )}
           <li className="list-items" href="/">
             Gamifying Solutions
           </li>
           <Link to="/pricing" className="list-items">
             Pricing
           </Link>
-          <Link to="/profile" className="list-items">
-            Profile
-          </Link>
+          {storedUserData ? (
+            <Link to="/profile" className="list-items">
+              Profile
+            </Link>
+          ) : (
+            <Link to="/login" className="list-items">
+              Profile
+            </Link>
+          )}
           <li className="list-items" href="/">
             Contact us
           </li>

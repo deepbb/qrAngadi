@@ -26,7 +26,6 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your logic here to handle form submission
     console.log("Form submitted:", formData);
     try {
       const response = await fetch(
@@ -48,12 +47,13 @@ function Login() {
         localStorage.setItem("token", data.token);
         localStorage.setItem("userData", JSON.stringify(formData));
         navigate("/");
-        // You can add further logic for successful signup
+        window.location.reload(true);
+        
       } else {
         const errorData = await response.json();
         console.error('Sigin failed:', errorData);
         alert(errorData.message)
-        // You can handle errors appropriately
+       
       }
     } catch (error) {
       console.error("Error during sigin:", error.message);
@@ -108,7 +108,7 @@ function Login() {
                 className='input'
                 placeholder='Password'
               />
-              <div style={{ display: 'flex', alignItems: 'center', width: 250, marginTop: 10 }}>
+              <div style={{ display: 'flex', alignItems: 'center', width: 300, marginTop: 10 }}>
                 <input
                   type="checkbox"
                   id="keepSignedIn"

@@ -5,7 +5,7 @@ import Home from "../../assets/home.png";
 import Product from "../../assets/products.png";
 import QR from "../../assets/profile-qr.png";
 import CreateQR from "../../assets/createQR.svg";
-import { MdKeyboardArrowRight } from "react-icons/md";
+import { MdKeyboardArrowRight, MdUpdate } from "react-icons/md";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { FaFilter } from "react-icons/fa";
 import { MdFileDownload } from "react-icons/md";
@@ -23,14 +23,34 @@ import Help from "../../assets/help.svg";
 import { GetProfile } from "../../Api/Users";
 import { DeleteProfileQr } from "../../Utility/QrType/DeleteQr";
 import { useNavigate } from "react-router-dom";
+import View1 from "../../assets/edit.png";
 import { SpinnerRoundOutlined, SpinnerCircularFixed } from "spinners-react";
+import Modal from "../Modal/Modal";
 
 function Profile() {
   const [data, setData] = useState([]);
   const [id, setId] = useState("");
   const navigate = useNavigate();
-  const [load,setLoad] = useState(true)
-  const [filterText,setFilterText] = useState('')
+  const [load, setLoad] = useState(false);
+  const [filterText, setFilterText] = useState("");
+  const [open, setOpen] = useState(false);
+  const [uniqueId, setUniqueId] = useState("");
+  const [type, setType] = useState("");
+  const [name,setName]=useState("")
+
+  const OpnemOdal = (id, types) => {
+    setType(types);
+    setUniqueId(id);
+    setOpen(true);
+  };
+
+  const CloseModal = () => {
+    setOpen(false);
+  };
+
+  const ChangeLoad=()=>{
+    setLoad(false)
+  }
 
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
@@ -43,6 +63,7 @@ function Profile() {
     GetProfile().then((res) => {
       setData(res.data.Qr.reverse());
       setId(res.data._id);
+      setName(res.data.Name)
       setLoad(false);
     });
   };
@@ -90,6 +111,10 @@ function Profile() {
     link.click();
     document.body.removeChild(link);
   };
+
+  const navigateHome = ()=> {
+      navigate("/")
+  }
   return (
     <div className="profile-container">
       {load ? (
@@ -113,15 +138,25 @@ function Profile() {
         />
       ) : null}
 
+      <Modal
+        isOpen={open}
+        closeModal={CloseModal}
+        id={uniqueId}
+        type={type}
+        ChangeLoad={ChangeLoad}
+        Profile={Profile}
+      ></Modal>
+
       <div className="sidebar">
         <div className="logo-image-container">
           <img
             src={QRAngadi}
             alt=""
-            style={{ width: 100, height: 100, objectFit: "contain" }}
+            style={{ width: 100, height: 100, objectFit: "contain",cursor:'pointer'}}
+            onClick={navigateHome}
           />
         </div>
-        <div className="home-link">
+        <div className="home-link" onClick={navigateHome}>
           <div className="logo-box-image">
             <img src={Home} alt="" style={{ width: 20, height: 20 }} />
           </div>
@@ -183,7 +218,7 @@ function Profile() {
         <div className="profile-tab" onClick={toggleDropdown} >
           <div style={{ display: "flex", alignItems: "center" }}>
             <IoPersonCircleSharp size={25} />
-            <span style={{ fontSize: 16,marginLeft:5 }}>Sravan Kumar</span>
+            <span style={{ fontSize: 16,marginLeft:5 }}>{name}</span>
           </div>
           <MdKeyboardArrowDown size={25} onClick={toggleDropdown} />
         </div>
@@ -193,10 +228,10 @@ function Profile() {
         </span>
         <div className="qr-wraper">
           <div className="qr-input-container">
-            <div className="name-box">
+            {/* <div className="name-box">
               <span className="profile-search-name">Name</span>
               <MdKeyboardArrowDown size={25} />
-            </div>
+            </div> */}
             <input
               type="text"
               placeholder="search"
@@ -268,26 +303,33 @@ function Profile() {
                       <td
                         className="cellStyleAction"
                         style={{
-                          marginRight: 50,
+                          marginRight: 80,
                           textAlign: "center",
                         }}
                       >
                         <img
+                          src={View1}
+                          alt=""
+                          style={{ width: 20, height: 20, padding: 0,cursor:'pointer' }}
+                          onClick={() => OpnemOdal(item.UniqueId, item.Qrtype)}
+                        />
+
+                        <img
                           src={View}
                           alt=""
-                          style={{ width: 40, height: 40, padding: 0 }}
+                          style={{ width: 40, height: 40, padding: 0,cursor:'pointer' }}
                           onClick={() => openQrInNewWindow(item.QrImage)}
                         />
                         <img
                           src={Graph}
                           alt=""
-                          style={{ width: 40, height: 40, padding: 0 }}
+                          style={{ width: 40, height: 40, padding: 0,cursor:'pointer'}}
                           onClick={() => navigate("/dashboard/" + item._id)}
                         />
                         <img
                           src={Download}
                           alt=""
-                          style={{ width: 40, height: 40, padding: 0 }}
+                          style={{ width: 40, height: 40, padding: 0,cursor:'pointer' }}
                           onClick={() =>
                             handleDownload(item.QrImage, `QR_${item._id}`)
                           }
@@ -295,7 +337,7 @@ function Profile() {
                         <img
                           src={Close}
                           alt=""
-                          style={{ width: 40, height: 40, padding: 0 }}
+                          style={{ width: 40, height: 40, padding: 0,cursor:'pointer' }}
                           onClick={() => DeleteQr(item._id, item.Qrtype)}
                         />
                       </td>

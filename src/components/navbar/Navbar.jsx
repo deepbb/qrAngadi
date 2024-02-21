@@ -1,13 +1,21 @@
 import React from "react";
 import "./Navbar.css";
 import Logo from "../../assets/qr-angadi.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const storedUserData = localStorage.getItem("userData");
   console.log("STORE DATA in HOME", storedUserData);
 
   console.log("NAVBAR", storedUserData);
+
+  const handleLogout = () => {
+    // Remove stored user data from local storage
+    localStorage.removeItem("userData");
+    navigate("/");
+    window.location.reload(true);
+  };
 
   return (
     <div className="navbar">
@@ -32,9 +40,9 @@ export default function Navbar() {
               QR Code Solutions
             </Link>
           )}
-          <li className="list-items" href="/">
+          {/* <li className="list-items" href="/">
             Gamifying Solutions
-          </li>
+          </li> */}
           <Link to="/pricing" className="list-items">
             Pricing
           </Link>
@@ -47,11 +55,19 @@ export default function Navbar() {
               Profile
             </Link>
           )}
+          <Link to="/blog" className="list-items">
+            <li className="list-items">
+              Blogs
+          </li> 
+          </Link>
+          
           <li className="list-items" href="/">
             Contact us
           </li>
         </div>
-        <div className="navbar-login">
+        {storedUserData ?
+          <button className="btn-login" style={{marginLeft:50}}  onClick={handleLogout}>Logout</button> : 
+          <div className="navbar-login">
           <Link to="/login" style={{ textDecoration: "none" }}>
             <button className="btn-login">Login</button>
           </Link>
@@ -59,6 +75,7 @@ export default function Navbar() {
             <button className="btn-signup">Sign up</button>
           </Link>
         </div>
+            }
       </div>
     </div>
   );

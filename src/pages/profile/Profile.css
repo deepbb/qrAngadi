@@ -6,6 +6,7 @@
     flex: 2;
     box-shadow: 5px 0px 10px #0000000F;
     height: 300px;
+    height: auto;
  
 }
 .logo-image-profile {
@@ -71,8 +72,8 @@
     flex: 10;
 }
 .qr-input-container {
-    box-shadow: 0px 0px 10px #00000029;
-    border: 0.20000000298023224px solid #707070;
+    /* box-shadow: 0px 0px 10px #00000029; */
+    /* border: 0.20000000298023224px solid #707070; */
     height: 25px;
     border-radius: 15px;
     margin-top: 10px;
@@ -94,15 +95,15 @@
     padding-left: 5px;
 }
 .search-input {
-    box-shadow: inset 0px 0px 10px #00000029;
-    border: none;
-    height: 20px;
+    height: 40px;
     width: 250px;
     outline: none;
-    padding-left: 5px;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+    padding-left: 30px;
+    border: 1px solid #AAAAAA;
+    border-radius: 10px;
+
 }
+
 .search-logos {
     display: flex;
     align-items: center;
@@ -113,26 +114,37 @@
 .qr-wraper {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 .create-qr {
-    margin-left: 20px;
+    margin-right: 20px;
+    height: 40px;
+    width: 250px;
+    border: 1px solid #FF7143;
+    background-color: transparent;
+    color: #FF7143;
+    font-family: Poppins;
+    font-weight: 600;
+    border-radius: 10px;
 }
 .cellStyle {
    border-bottom: 1px solid #ddd;
-   text-align: left;
+   text-align: center;
    font-size: 13px;
    height: 30px;
    padding: 10px;
 }
 .cellStyle1 {
     border-bottom: 1px solid #F2F2F2;
-    text-align: left;
+    text-align: center;
     width: 10px;
     font-size: 14px;
  } 
  .cellStyleType {
     border-bottom: 1px solid #ddd;
-    text-align: left;
+    text-align: center;
     font-size: 13px;
     height: 30px;
     width: 50px;
@@ -141,35 +153,35 @@
  .cellStyleHeader {
     color: #FFFFFF;
     font-weight: 100;
-    text-align: left;
+    text-align: center;
     width: 60px;
-    font-size: 15px;
+    font-size: 13px;
     padding: 10px;
 
  }
  .cellStyleHeaderType {
     color: #FFFFFF;
     font-weight: 100;
-    text-align: left;
+    text-align: center;
     width: 30px;
-    font-size: 15px;
+    font-size: 13px;
     padding: 10px;
 
  }
  .cellStyleHeaderCategory {
     color: #FFFFFF;
     font-weight: 100;
-    text-align: left;
+    text-align: center;
     width: 30px;
-    font-size: 15px;
+    font-size: 13px;
     padding: 10px;
  }
  .cellStyleHeaderActions {
     color: #FFFFFF;
     font-weight: 100;
-    text-align: left;
+    text-align: center;
     width: 80px;
-    font-size: 15px;
+    font-size: 13px;
 
  }
  .tableRow {

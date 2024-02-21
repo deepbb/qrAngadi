@@ -48,22 +48,22 @@ function Footer() {
                 <tr>
                   <td>Static Qr </td>
                   <td>Qr Creation</td>
-                  <td onClick={() => navigate("/blog")}>News</td>
+                  <td style={{cursor:'pointer'}} onClick={() => navigate("/blog")}>News</td>
                 </tr>
                 <tr>
                   <td>Dyamic Qr</td>
                   <td>Analytices</td>
-                  <td onClick={() => navigate("/blog")}>Blog</td>
+                  <td style={{cursor:'pointer'}} onClick={() => navigate("/blog")}>Blog</td>
                 </tr>
                 <tr>
                   <td>Scan Analytices</td>
                   <td>Game solutions</td>
-                  <td onClick={() => navigate("/blog")}>Videos</td>
+                  <td  style={{cursor:'pointer'}} onClick={() => navigate("/blog")}>Videos</td>
                 </tr>
                 <tr>
                   <td>Multiple Types</td>
                   <td>Product Reach out</td>
-                  <td onClick={() => navigate("/faq")}>FAQ's</td>
+                  <td style={{cursor:'pointer'}} onClick={() => navigate("/faq")}>FAQ's</td>
                 </tr>
               </tbody>
             </table>

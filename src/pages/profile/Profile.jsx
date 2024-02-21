@@ -39,10 +39,13 @@ function Profile() {
   const [name,setName]=useState("")
 
   const OpnemOdal = (id, types) => {
+    console.log(id);
     setType(types);
     setUniqueId(id);
     setOpen(true);
   };
+
+
 
   const CloseModal = () => {
     setOpen(false);
@@ -238,19 +241,19 @@ function Profile() {
               className="search-input"
               onChange={(e) => setFilterText(e.target.value)}
             />
-            <div style={{ position: "absolute", right: 90 }}>
+            <div style={{ position: "absolute", left: 10 }}>
               <MdOutlineSearch />
             </div>
-            <div className="search-logos">
+            {/* <div className="search-logos">
               <FaFilter size={18} />
               <MdFileDownload size={23} />
-            </div>
+            </div> */}
           </div>
-          <div
+          <button
             className="create-qr"
             onClick={() => navigate("/qrcodesolutions")}
           >
-            <img
+            {/* <img
               src={CreateQR}
               alt=""
               style={{
@@ -259,8 +262,9 @@ function Profile() {
                 objectFit: "contain",
                 cursor: "pointer",
               }}
-            />
-          </div>
+            /> */}
+            + Create QR Code
+          </button>
         </div>
         <div>
           <table

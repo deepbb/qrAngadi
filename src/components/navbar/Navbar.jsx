@@ -18,10 +18,10 @@ export default function Navbar() {
   };
 
   return (
-    <div className="navbar">
+    <div className="navbar_container">
       <div className="navbar-wraper">
         <div className="navbar-logo">
-          <img src={Logo} width={90} height={50} alt="logo" />
+          <img src={Logo} width={90} height={40} alt="logo" />
         </div>
         <div className="navnar-menu">
           <Link to="/" className="list-items" href="/">
@@ -55,8 +55,10 @@ export default function Navbar() {
               Profile
             </Link>
           )}
+          <Link to="/contact-us" className="list-items" >
           <li className="list-items" href="/">
             Contact us
+            </li>
           </Link>
         </div>
         {storedUserData ?

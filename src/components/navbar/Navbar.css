@@ -1,7 +1,8 @@
-.navbar {
+.navbar_container {
   margin: 0;
   height: 40px;
   margin-top: 20px;
+  background-color: #f3f3f3;
 }
 .innterview {
   background-color: #ffffff;

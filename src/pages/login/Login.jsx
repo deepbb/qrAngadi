@@ -42,7 +42,7 @@ function Login() {
       if (response.ok) {
         const data = await response.json();
         console.log("Signin successful:", data);
-        alert("Successfully Created Account");
+        alert("Successfully Logged In");
 
         localStorage.setItem("token", data.token);
         localStorage.setItem("userData", JSON.stringify(formData));

@@ -55,15 +55,9 @@ export default function Navbar() {
               Profile
             </Link>
           )}
-          <Link to="/blog" className="list-items">
-            <li className="list-items">
-              Blogs
-          </li> 
-          </Link>
-          
           <li className="list-items" href="/">
             Contact us
-          </li>
+          </Link>
         </div>
         {storedUserData ?
           <button className="btn-login" style={{marginLeft:50}}  onClick={handleLogout}>Logout</button> : 

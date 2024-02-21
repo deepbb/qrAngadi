@@ -21,7 +21,7 @@ const Modal = ({ isOpen, closeModal, id, type, ChangeLoad, Profile }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
+    <div className="modal-overlay" style={{ display: 'flex' }}>
       <div className="modal">
         <MdClose className="close-icon" onClick={closeModal} />
         <h1>Update Qr Data</h1>

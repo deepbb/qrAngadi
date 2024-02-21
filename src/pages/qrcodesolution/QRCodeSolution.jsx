@@ -508,7 +508,7 @@ function QRCodeSolution() {
               </div>
 
               {showColorPicker && (
-                <div style={{ position: "absolute" }}>
+                <div style={{ position: "absolute" }} onClick={toggleColorPicker}>
                   <SketchPicker
                     onChange={(color) => {
                       setDotColor(color.rgb);
@@ -560,7 +560,7 @@ function QRCodeSolution() {
               </div>
 
               {showColorPicker1 && (
-                <div style={{ position: "absolute" }}>
+                <div style={{ position: "absolute" }} onClick={toggleColorPicker1}>
                   <SketchPicker
                     onChange={(color) => {
                       setBackgroundColor(color.rgb);
@@ -580,7 +580,7 @@ function QRCodeSolution() {
                   marginLeft: 10,
                 }}
               >
-                Corners Square Options
+                Eye Options
               </span>
               <svg
                 style={{ width: 20, height: 20, marginRight: 5 }}
@@ -642,7 +642,7 @@ function QRCodeSolution() {
               </div>
 
               {showColorPicker2 && (
-                <div style={{ position: "absolute" }}>
+                <div style={{ position: "absolute" }} onClick={toggleColorPicker2}>
                   <SketchPicker
                     onChange={(color) => {
                       setCornersColor(color.rgb);
@@ -661,7 +661,7 @@ function QRCodeSolution() {
                   marginLeft: 10,
                 }}
               >
-                CornersDot Options
+                Corners Options
               </span>
               <svg
                 style={{ width: 20, height: 20, marginRight: 5 }}
@@ -727,7 +727,7 @@ function QRCodeSolution() {
               </div>
 
               {showColorPicker3 && (
-                <div style={{ position: "absolute" }}>
+                <div style={{ position: "absolute" }} onClick={toggleColorPicker3}>
                   <SketchPicker
                     onChange={(color) => {
                       setCornersDotColor(color.rgb);

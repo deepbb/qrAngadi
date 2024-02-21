@@ -47,9 +47,9 @@ export default function Navbar() {
               Profile
             </Link>
           )}
-          <li className="list-items" href="/">
+          <Link className="list-items" to="/contact-us">
             Contact us
-          </li>
+          </Link>
         </div>
         <div className="navbar-login">
           <Link to="/login" style={{ textDecoration: "none" }}>

@@ -8,6 +8,7 @@ import Signup from "../pages/signup/Signup";
 import Login from "../pages/login/Login";
 import Dashboard from "../pages/Analytices/Pages/Dashboard/Dashboard";
 import Pricing from "../pages/pricing/pricing";
+import ContactUs from "../pages/contact-us";
 function RouterComponent() {
   // const [loading, setLoading] = useState(true);
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -68,6 +69,7 @@ function RouterComponent() {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/contact-us" element={<ContactUs />} />
       </Routes>
     </div>
   );

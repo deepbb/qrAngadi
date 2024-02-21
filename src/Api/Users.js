@@ -126,3 +126,21 @@ export const GetAnalytices = async (data) => {
     return error.message;
   }
 };
+
+//-----------------Contact us-----------------------//
+
+export const Contactus = async (data) => {
+  try {
+    let result = await fetch(`${BaseUrl}/contact/CreateContact`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    result = await result.json();
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};

@@ -9,6 +9,9 @@ import instagram from "../../assets/letsTalk/instagram.png";
 import linkedin from "../../assets/letsTalk/linkedin.png";
 import pintrest from "../../assets/letsTalk/pintrest.png";
 import youtube from "../../assets/letsTalk/youtube.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Contactus } from "../../Api/Users";
 
 function Input({ label, type, inputId, placeholder, value, setValue }) {
   return (
@@ -33,8 +36,46 @@ function LetsTalk() {
   const [queries, setQueries] = useState("");
   const [message, setMessage] = useState("");
 
+  const SubmitButton = () => {
+    if(!firstName){
+      toast("Please enter first name")
+      return false
+    }else if(!lastName){
+      toast("Please enter last name")
+      return false  
+    }else if(!email){
+      toast("Please enter email")
+      return false
+    }else if(!queries){
+      toast("Please enter queries")
+      return false
+    }else if(!message){
+      toast("Please enter message")
+      return false
+    }
+    Contactus({
+      FirstName: firstName,
+      LastName:lastName,
+      Email: email,
+      Subject: queries,
+      Message: message,
+    }).then((res)=>{
+      if(res.status==="success"){
+        toast("Queries send successfully")
+        setFirstName("")
+        setLastName("")
+        setEmail("")
+        setQueries("")
+        setMessage("")
+      }else{
+        toast(res.message)
+      }
+    });
+  };
+
   return (
     <div className={`${styles.letsTalkContainer} row m-auto mt-5`}>
+       <ToastContainer />
       <div className="col-5 py-4 ps-4 d-flex justify-content-center flex-column">
         <img
           src={telePic}
@@ -173,9 +214,7 @@ function LetsTalk() {
         </div>
         <button
           className={`${styles.submitButton} mb-5`}
-          onClick={() => {
-            console.log(firstName, lastName);
-          }}
+          onClick={() => SubmitButton()}
         >
           SEND MESSAGE
         </button>

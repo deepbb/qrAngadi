@@ -7,8 +7,10 @@ import twit from "../../assets/twit.png";
 import tweet from "../../assets/tweet.png";
 import YT from "../../assets/YT.png";
 import LinkedIn from "../../assets/linked.png";
+import { useNavigate } from "react-router-dom";
 
 function Footer() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="footer">
@@ -44,24 +46,24 @@ function Footer() {
               </thead>
               <tbody>
                 <tr>
-                  <td>Product 1</td>
-                  <td>Service 1</td>
-                  <td>News</td>
+                  <td>Static Qr </td>
+                  <td>Qr Creation</td>
+                  <td onClick={() => navigate("/blog")}>News</td>
                 </tr>
                 <tr>
-                  <td>Product 2</td>
-                  <td>Service 2</td>
-                  <td>Blog</td>
+                  <td>Dyamic Qr</td>
+                  <td>Analytices</td>
+                  <td onClick={() => navigate("/blog")}>Blog</td>
                 </tr>
                 <tr>
-                  <td>Product 3</td>
-                  <td>Service 3</td>
-                  <td>Videos</td>
+                  <td>Scan Analytices</td>
+                  <td>Game solutions</td>
+                  <td onClick={() => navigate("/blog")}>Videos</td>
                 </tr>
                 <tr>
-                  <td>Product 4</td>
-                  <td>Service 4</td>
-                  <td>FAQ's</td>
+                  <td>Multiple Types</td>
+                  <td>Product Reach out</td>
+                  <td onClick={() => navigate("/faq")}>FAQ's</td>
                 </tr>
               </tbody>
             </table>
